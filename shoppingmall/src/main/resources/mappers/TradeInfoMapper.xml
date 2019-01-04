@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.czn.shoppingmall.dao.TradeInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.czn.shoppingmall.domain.TradeInfo" >
+    <constructor >
+      <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="buyer_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="seller_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trade_platform" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="trade_number" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="trade_status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, buyer_id, seller_id, trade_platform, trade_number, trade_status, create_time, 
+    update_time
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from shopping_mall_trade_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from shopping_mall_trade_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.czn.shoppingmall.domain.TradeInfo" >
+    insert into shopping_mall_trade_info (id, buyer_id, seller_id, 
+      trade_platform, trade_number, trade_status, 
+      create_time, update_time)
+    values (#{id,jdbcType=INTEGER}, #{buyerId,jdbcType=INTEGER}, #{sellerId,jdbcType=INTEGER}, 
+      #{tradePlatform,jdbcType=INTEGER}, #{tradeNumber,jdbcType=VARCHAR}, #{tradeStatus,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.czn.shoppingmall.domain.TradeInfo" >
+    insert into shopping_mall_trade_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="buyerId != null" >
+        buyer_id,
+      </if>
+      <if test="sellerId != null" >
+        seller_id,
+      </if>
+      <if test="tradePlatform != null" >
+        trade_platform,
+      </if>
+      <if test="tradeNumber != null" >
+        trade_number,
+      </if>
+      <if test="tradeStatus != null" >
+        trade_status,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="buyerId != null" >
+        #{buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="sellerId != null" >
+        #{sellerId,jdbcType=INTEGER},
+      </if>
+      <if test="tradePlatform != null" >
+        #{tradePlatform,jdbcType=INTEGER},
+      </if>
+      <if test="tradeNumber != null" >
+        #{tradeNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeStatus != null" >
+        #{tradeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.czn.shoppingmall.domain.TradeInfo" >
+    update shopping_mall_trade_info
+    <set >
+      <if test="buyerId != null" >
+        buyer_id = #{buyerId,jdbcType=INTEGER},
+      </if>
+      <if test="sellerId != null" >
+        seller_id = #{sellerId,jdbcType=INTEGER},
+      </if>
+      <if test="tradePlatform != null" >
+        trade_platform = #{tradePlatform,jdbcType=INTEGER},
+      </if>
+      <if test="tradeNumber != null" >
+        trade_number = #{tradeNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeStatus != null" >
+        trade_status = #{tradeStatus,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.czn.shoppingmall.domain.TradeInfo" >
+    update shopping_mall_trade_info
+    set buyer_id = #{buyerId,jdbcType=INTEGER},
+      seller_id = #{sellerId,jdbcType=INTEGER},
+      trade_platform = #{tradePlatform,jdbcType=INTEGER},
+      trade_number = #{tradeNumber,jdbcType=VARCHAR},
+      trade_status = #{tradeStatus,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
