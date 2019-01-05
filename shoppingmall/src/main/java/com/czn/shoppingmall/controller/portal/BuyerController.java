@@ -13,4 +13,6 @@ public class BuyerController {
     public String login(){
         return "success";
     }
+
+
 }
