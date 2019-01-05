@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="60 seconds" debug="false">
+    <!-- 控制台日志 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoding>UTF-8</encoding>
+        <encoder>
+            <pattern>[%d{HH:mm:ss.SSS}][%p][%c{40}][%t] %m%n</pattern>
+        </encoder>
+        <!-- 配置DEBGU级别以上的日志都打出来 -->
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>DEBUG</level>
+        </filter>
+    </appender>
+
+    <!-- 访问操作日志记录-->
+    <appender name="shoppingmall" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!--日志文件的位置-->
+        <File>D:/tomcat/apache-tomcat-8.0.53/logs/shoppingmall.log</File>
+        <!--日志滚动策略-->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>D:/tomcat/apache-tomcat-8.0.53/logs/shoppingmall.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <append>true</append>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%d{HH:mm:ss.SSS}][%p][%c{40}][%t] %m%n</pattern>
+        </encoder>
+    </appender>
+
+
+    <!--配置错误日志-->
+    <appender name="error" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <File>D:/tomcat/apache-tomcat-8.0.53/logs/shoppingmall_error.log</File>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>D:/tomcat/apache-tomcat-8.0.53/logs/shoppingmall_error.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <append>true</append>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%d{HH:mm:ss.SSS}][%p][%c{40}][%t] %m%n</pattern>
+        </encoder>
+        <!-- 配置除了ERROR日志，其他级别的日志一概不接受-->
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+    </appender>
+
+    <logger name="com.czn.shoppingmall" additivity="false" level="INFO" >
+        <appender-ref ref="shoppingmall" />
+        <appender-ref ref="console"/>
+    </logger>
+
+    <logger name="com.czn.shoppingmall.dao" level="DEBUG"/>
+
+    <!-- 用于调式的Mybatis的DEBUG日志，线上部署可以去掉 -->
+    <logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="DEBUG" >
+        <appender-ref ref="console"/>
+    </logger>
+
+    <!--sql语句日志 线上部署可以去掉-->
+    <logger name="java.sql.Statement" level="DEBUG">
+      <appender-ref ref="console"/>
+    </logger>
+
+    <root level="DEBUG">
+        <appender-ref ref="console"/>
+        <appender-ref ref="error"/>
+    </root>
+
+</configuration>
