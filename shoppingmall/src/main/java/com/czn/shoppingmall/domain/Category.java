@@ -9,7 +9,7 @@ public class Category {
 
     private String name;
 
-    private String desc;
+    private String detail;
 
     private Integer status;
 
@@ -19,11 +19,11 @@ public class Category {
 
     private Date updateTime;
 
-    public Category(Integer id, Integer parentId, String name, String desc, Integer status, Integer orderBy, Date createTime, Date updateTime) {
+    public Category(Integer id, Integer parentId, String name, String detail, Integer status, Integer orderBy, Date createTime, Date updateTime) {
         this.id = id;
         this.parentId = parentId;
         this.name = name;
-        this.desc = desc;
+        this.detail = detail;
         this.status = status;
         this.orderBy = orderBy;
         this.createTime = createTime;
@@ -58,12 +58,12 @@ public class Category {
         this.name = name == null ? null : name.trim();
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDetail() {
+        return detail;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setDetail(String detail) {
+        this.detail = detail == null ? null : detail.trim();
     }
 
     public Integer getStatus() {

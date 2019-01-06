@@ -6,7 +6,7 @@
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="parent_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="desc" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="detail" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="order_by" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
@@ -14,7 +14,7 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, parent_id, name, desc, status, order_by, create_time, update_time
+    id, parent_id, name, detail, status, order_by, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -28,11 +28,11 @@
   </delete>
   <insert id="insert" parameterType="com.czn.shoppingmall.domain.Category" >
     insert into shopping_mall_category (id, parent_id, name, 
-      desc, status, order_by, 
+      detail, status, order_by,
       create_time, update_time)
     values (#{id,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
-      #{desc,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{orderBy,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+      #{detail,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{orderBy,jdbcType=INTEGER},
+     now(), now())
   </insert>
   <insert id="insertSelective" parameterType="com.czn.shoppingmall.domain.Category" >
     insert into shopping_mall_category
@@ -46,8 +46,8 @@
       <if test="name != null" >
         name,
       </if>
-      <if test="desc != null" >
-        desc,
+      <if test="detail != null" >
+        detail,
       </if>
       <if test="status != null" >
         status,
@@ -72,8 +72,8 @@
       <if test="name != null" >
         #{name,jdbcType=VARCHAR},
       </if>
-      <if test="desc != null" >
-        #{desc,jdbcType=VARCHAR},
+      <if test="detail != null" >
+        #{detail,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         #{status,jdbcType=INTEGER},
@@ -82,10 +82,10 @@
         #{orderBy,jdbcType=INTEGER},
       </if>
       <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+        now(),
       </if>
       <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+        now(),
       </if>
     </trim>
   </insert>
@@ -98,8 +98,8 @@
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
       </if>
-      <if test="desc != null" >
-        desc = #{desc,jdbcType=VARCHAR},
+      <if test="detail != null" >
+        detail = #{detail,jdbcType=VARCHAR},
       </if>
       <if test="status != null" >
         status = #{status,jdbcType=INTEGER},
@@ -108,10 +108,10 @@
         order_by = #{orderBy,jdbcType=INTEGER},
       </if>
       <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+        create_time = now(),
       </if>
       <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+        update_time = now(),
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -120,11 +120,20 @@
     update shopping_mall_category
     set parent_id = #{parentId,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
-      desc = #{desc,jdbcType=VARCHAR},
+      detail = #{detail,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       order_by = #{orderBy,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
+      create_time = now(),
+      update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectCategoryChildByParentId" resultMap="BaseResultMap" parameterType="int">
+    select
+    <include refid="Base_Column_List"/>
+    from shopping_mall_category
+    where parent_id = #{parentId}
+  </select>
+
+
 </mapper>

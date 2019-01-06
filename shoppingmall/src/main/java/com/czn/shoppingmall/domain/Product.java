@@ -14,7 +14,7 @@ public class Product {
 
     private String subtitle;
 
-    private String desc;
+    private String detail;
 
     private String mainImageUrl;
 
@@ -30,13 +30,13 @@ public class Product {
 
     private Date updateTime;
 
-    public Product(Integer id, Integer categoryId, Integer storeId, String name, String subtitle, String desc, String mainImageUrl, String subImagesUrl, BigDecimal price, Integer stock, Integer status, Date createTime, Date updateTime) {
+    public Product(Integer id, Integer categoryId, Integer storeId, String name, String subtitle, String detail, String mainImageUrl, String subImagesUrl, BigDecimal price, Integer stock, Integer status, Date createTime, Date updateTime) {
         this.id = id;
         this.categoryId = categoryId;
         this.storeId = storeId;
         this.name = name;
         this.subtitle = subtitle;
-        this.desc = desc;
+        this.detail = detail;
         this.mainImageUrl = mainImageUrl;
         this.subImagesUrl = subImagesUrl;
         this.price = price;
@@ -90,12 +90,12 @@ public class Product {
         this.subtitle = subtitle == null ? null : subtitle.trim();
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDetail() {
+        return detail;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setDetail(String detail) {
+        this.detail = detail == null ? null : detail.trim();
     }
 
     public String getMainImageUrl() {

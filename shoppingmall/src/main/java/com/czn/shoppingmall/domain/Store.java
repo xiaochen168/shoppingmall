@@ -13,19 +13,19 @@ public class Store {
 
     private Integer status;
 
-    private String desc;
+    private String detail;
 
     private Date createTime;
 
     private Date updateTime;
 
-    public Store(Integer id, Integer userId, Integer categoryId, String storeName, Integer status, String desc, Date createTime, Date updateTime) {
+    public Store(Integer id, Integer userId, Integer categoryId, String storeName, Integer status, String detail, Date createTime, Date updateTime) {
         this.id = id;
         this.userId = userId;
         this.categoryId = categoryId;
         this.storeName = storeName;
         this.status = status;
-        this.desc = desc;
+        this.detail = detail;
         this.createTime = createTime;
         this.updateTime = updateTime;
     }
@@ -74,12 +74,12 @@ public class Store {
         this.status = status;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDetail() {
+        return detail;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc == null ? null : desc.trim();
+    public void setDetail(String detail) {
+        this.detail = detail == null ? null : detail.trim();
     }
 
     public Date getCreateTime() {

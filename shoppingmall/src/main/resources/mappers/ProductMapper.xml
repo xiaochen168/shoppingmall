@@ -8,7 +8,7 @@
       <arg column="store_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="subtitle" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="desc" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="detail" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="main_image_url" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="sub_images_url" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="price" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
@@ -19,7 +19,7 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, category_id, store_id, name, subtitle, desc, main_image_url, sub_images_url, 
+    id, category_id, store_id, name, subtitle, detail, main_image_url, sub_images_url,
     price, stock, status, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -34,12 +34,12 @@
   </delete>
   <insert id="insert" parameterType="com.czn.shoppingmall.domain.Product" >
     insert into shopping_mall_product (id, category_id, store_id, 
-      name, subtitle, desc, 
+      name, subtitle, detail,
       main_image_url, sub_images_url, price, 
       stock, status, create_time, 
       update_time)
     values (#{id,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, #{storeId,jdbcType=INTEGER}, 
-      #{name,jdbcType=VARCHAR}, #{subtitle,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR}, #{subtitle,jdbcType=VARCHAR}, #{detail,jdbcType=VARCHAR},
       #{mainImageUrl,jdbcType=VARCHAR}, #{subImagesUrl,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
       #{stock,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP})
@@ -62,8 +62,8 @@
       <if test="subtitle != null" >
         subtitle,
       </if>
-      <if test="desc != null" >
-        desc,
+      <if test="detail != null" >
+        detail,
       </if>
       <if test="mainImageUrl != null" >
         main_image_url,
@@ -103,8 +103,8 @@
       <if test="subtitle != null" >
         #{subtitle,jdbcType=VARCHAR},
       </if>
-      <if test="desc != null" >
-        #{desc,jdbcType=VARCHAR},
+      <if test="detail != null" >
+        #{detail,jdbcType=VARCHAR},
       </if>
       <if test="mainImageUrl != null" >
         #{mainImageUrl,jdbcType=VARCHAR},
@@ -144,8 +144,8 @@
       <if test="subtitle != null" >
         subtitle = #{subtitle,jdbcType=VARCHAR},
       </if>
-      <if test="desc != null" >
-        desc = #{desc,jdbcType=VARCHAR},
+      <if test="detail != null" >
+        detail = #{detail,jdbcType=VARCHAR},
       </if>
       <if test="mainImageUrl != null" >
         main_image_url = #{mainImageUrl,jdbcType=VARCHAR},
@@ -177,7 +177,7 @@
       store_id = #{storeId,jdbcType=INTEGER},
       name = #{name,jdbcType=VARCHAR},
       subtitle = #{subtitle,jdbcType=VARCHAR},
-      desc = #{desc,jdbcType=VARCHAR},
+      detail = #{detail,jdbcType=VARCHAR},
       main_image_url = #{mainImageUrl,jdbcType=VARCHAR},
       sub_images_url = #{subImagesUrl,jdbcType=VARCHAR},
       price = #{price,jdbcType=DECIMAL},
