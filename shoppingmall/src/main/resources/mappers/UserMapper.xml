@@ -10,14 +10,14 @@
       <arg column="email" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="phone" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="question" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="anwser" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="role" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="answer" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="role" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, username, password, realname, email, phone, question, anwser, role, create_time, 
+    id, username, password, realname, email, phone, question, answer, role, create_time,
     update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -33,12 +33,12 @@
   <insert id="insert" parameterType="com.czn.shoppingmall.domain.User" >
     insert into shopping_mall_user (id, username, password, 
       realname, email, phone, 
-      question, anwser, role, 
+      question, answer, role,
       create_time, update_time)
     values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{realname,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
-      #{question,jdbcType=VARCHAR}, #{anwser,jdbcType=VARCHAR}, #{role,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+      #{question,jdbcType=VARCHAR}, #{answer,jdbcType=VARCHAR}, #{role,jdbcType=INTEGER},
+      now(), now())
   </insert>
   <insert id="insertSelective" parameterType="com.czn.shoppingmall.domain.User" >
     insert into shopping_mall_user
@@ -64,8 +64,8 @@
       <if test="question != null" >
         question,
       </if>
-      <if test="anwser != null" >
-        anwser,
+      <if test="answer != null" >
+        answer,
       </if>
       <if test="role != null" >
         role,
@@ -99,17 +99,17 @@
       <if test="question != null" >
         #{question,jdbcType=VARCHAR},
       </if>
-      <if test="anwser != null" >
-        #{anwser,jdbcType=VARCHAR},
+      <if test="answer != null" >
+        #{answer,jdbcType=VARCHAR},
       </if>
       <if test="role != null" >
-        #{role,jdbcType=VARCHAR},
+        #{role,jdbcType=INTEGER},
       </if>
       <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+        now(),
       </if>
       <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+        now(),
       </if>
     </trim>
   </insert>
@@ -134,17 +134,17 @@
       <if test="question != null" >
         question = #{question,jdbcType=VARCHAR},
       </if>
-      <if test="anwser != null" >
-        anwser = #{anwser,jdbcType=VARCHAR},
+      <if test="answer != null" >
+        answer = #{answer,jdbcType=VARCHAR},
       </if>
       <if test="role != null" >
-        role = #{role,jdbcType=VARCHAR},
+        role = #{role,jdbcType=INTEGER},
       </if>
       <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+        create_time = now(),
       </if>
       <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+        update_time = now(),
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -157,10 +157,52 @@
       email = #{email,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       question = #{question,jdbcType=VARCHAR},
-      anwser = #{anwser,jdbcType=VARCHAR},
-      role = #{role,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
+      answer = #{answer,jdbcType=VARCHAR},
+      role = #{role,jdbcType=INTEGER},
+      create_time = now(),
+      update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="checkExistByUsername" resultType="int" parameterType="string">
+     select count(1)
+     from shopping_mall_user
+     where username = #{username}
+  </select>
+
+  <select id="checkExistByEmail" resultType="int" parameterType="string">
+     select count(1)
+     from shopping_mall_user
+     where email = #{email}
+</select>
+
+  <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
+     select
+     <include refid="Base_Column_List"/>
+     from  shopping_mall_user
+     where username = #{username}
+     and password = #{password}
+  </select>
+
+  <select id="selectQuestionByUsername" resultType="string" parameterType="string">
+     select question
+     from shopping_mall_user
+     where username = #{username}
+  </select>
+
+  <select id="checkAnswer" resultType="int" parameterType="map">
+     select count(1)
+     from shopping_mall_user
+     where username = #{username}
+     and question = #{question}
+     and answer = #{answer}
+  </select>
+
+  <update id="updatePasswordByUsername" parameterType="map">
+     update shopping_mall_user
+     set password = #{password},
+     update_time = now()
+     where username = #{username}
+  </update>
+
 </mapper>

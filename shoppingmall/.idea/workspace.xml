@@ -7,11 +7,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="57856b52-c262-42d3-a313-259447167323" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/common/Const.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/common/ResponseCode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/common/ServerResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/common/TokenCache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/controller/backend/admin/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/controller/backend/seller/SellerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/service/IUserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/service/impl/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/util/EncryptUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/common/ServerResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/common/ServerResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/controller/portal/BuyerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/controller/portal/BuyerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/dao/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/dao/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/domain/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/domain/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/AddressMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/AddressMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -40,26 +49,31 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="4" />
-          <entry key="xml" value="1" />
+          <entry key="class" value="6" />
+          <entry key="java" value="23" />
+          <entry key="xml" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="4" />
-          <entry key="XML" value="1" />
+          <entry key="CLASS" value="6" />
+          <entry key="JAVA" value="23" />
+          <entry key="XML" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2203" />
-          <entry key="xml" value="1" />
+          <entry key="dummy" value="4" />
+          <entry key="java" value="9965" />
+          <entry key="xml" value="644" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2203" />
-          <entry key="XML" value="1" />
+          <entry key="JAVA" value="9965" />
+          <entry key="PLAIN_TEXT" value="4" />
+          <entry key="SQL" value="18" />
+          <entry key="XML" value="626" />
         </counts>
       </usages-collector>
     </session>
@@ -67,75 +81,90 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="163">
-              <caret line="283" lean-forward="true" selection-start-line="283" selection-end-line="283" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/controller/portal/BuyerController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+            <state relative-caret-position="-1400">
+              <caret line="37" column="28" lean-forward="true" selection-start-line="37" selection-start-column="28" selection-end-line="37" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/common/ResponseCode.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="5" column="43" lean-forward="true" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
-              <folding>
-                <element signature="e#244#245#0" expanded="true" />
-                <element signature="e#271#272#0" expanded="true" />
-                <element signature="e#308#309#0" expanded="true" />
-                <element signature="e#340#341#0" expanded="true" />
-                <element signature="e#371#372#0" expanded="true" />
-                <element signature="e#398#399#0" expanded="true" />
-                <element signature="e#438#439#0" expanded="true" />
-                <element signature="e#470#471#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/common/ServerResponse.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/controller/backend/seller/SellerController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="86" column="71" selection-start-line="86" selection-start-column="71" selection-end-line="86" selection-end-column="71" />
+            <state relative-caret-position="377">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#424#425#0" expanded="true" />
-                <element signature="e#460#461#0" expanded="true" />
-                <element signature="e#951#952#0" expanded="true" />
-                <element signature="e#1019#1020#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/common/Const.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/controller/backend/admin/AdminController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+            <state relative-caret-position="1025">
+              <caret line="41" column="27" lean-forward="true" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/domain/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="132">
-              <caret line="42" column="30" lean-forward="true" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
+            <state relative-caret-position="139">
+              <caret line="110" selection-start-line="110" selection-end-line="110" />
+              <folding>
+                <element signature="e#2407#2408#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/service/impl/UserService.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="217">
+              <caret line="97" column="27" lean-forward="true" selection-start-line="97" selection-start-column="27" selection-end-line="97" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2703#2704#0" expanded="true" />
+                <element signature="e#2749#2750#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4461">
+              <caret line="191" lean-forward="true" selection-start-line="191" selection-end-line="191" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.4.1/mybatis-3.4.1.jar!/org/apache/ibatis/binding/MapperProxy.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="83">
+              <caret line="27" selection-start-line="27" selection-end-line="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.0.RELEASE/spring-web-4.0.0.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="223" selection-start-line="223" selection-end-line="223" />
             </state>
           </provider>
         </entry>
@@ -145,9 +174,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>role</find>
+      <find>answer</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -157,10 +193,20 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/controller/portal/BuyerController.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/common/Const.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/common/ResponseCode.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mappers/AddressMapper.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/common/ServerResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/common/TokenCache.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/dao/UserMapper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/service/IUserService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/util/EncryptUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/domain/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/service/impl/UserService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/controller/portal/BuyerController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/controller/backend/seller/SellerController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/controller/backend/admin/AdminController.java" />
       </list>
     </option>
   </component>
@@ -195,6 +241,27 @@
     <option name="x" value="117" />
     <option name="width" value="1815" />
     <option name="height" value="918" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State />
+          <State>
+            <id>CodeSpring CoreSpring</id>
+          </State>
+          <State>
+            <id>Spring</id>
+          </State>
+          <State>
+            <id>Spring CoreSpring</id>
+          </State>
+          <State>
+            <id>XMLSpring CoreSpring</id>
+          </State>
+        </expanded-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -264,7 +331,47 @@
               <item name="com" type="462c0819:PsiDirectoryNode" />
               <item name="czn" type="462c0819:PsiDirectoryNode" />
               <item name="shoppingmall" type="462c0819:PsiDirectoryNode" />
-              <item name="common" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shoppingmall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shoppingmall" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="czn" type="462c0819:PsiDirectoryNode" />
+              <item name="shoppingmall" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shoppingmall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shoppingmall" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="com" type="462c0819:PsiDirectoryNode" />
+              <item name="czn" type="462c0819:PsiDirectoryNode" />
+              <item name="shoppingmall" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="backend" type="462c0819:PsiDirectoryNode" />
+              <item name="seller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shoppingmall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shoppingmall" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shoppingmall" type="b2602c69:ProjectViewProjectNode" />
+              <item name="shoppingmall" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mappers" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -274,13 +381,14 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="Const&#9;FILE&#9;file://D:/shoppingmall/shoppingmall/src/main/java/com/czn/shoppingmall/common/Const.java&#10;ServerRe&#9;FILE&#9;file://D:/shoppingmall/shoppingmall/src/main/java/com/czn/shoppingmall/common/ServerResponse.java" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546713622145" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546781285977" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
+    <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -294,7 +402,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Tomcat Server.tomcat">
+    <configuration name="EncryptUtil" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.czn.shoppingmall.util.EncryptUtil" />
+      <module name="shoppingmall" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.czn.shoppingmall.util.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="tomcat" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.53" ALTERNATIVE_JRE_ENABLED="false">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
@@ -367,6 +488,15 @@
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Tomcat Server.tomcat" />
+      <item itemvalue="Application.EncryptUtil" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.EncryptUtil" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -379,52 +509,17 @@
       <option name="presentableId" value="Default" />
       <updated>1546690407206</updated>
       <workItem from="1546690411069" duration="582000" />
-      <workItem from="1546691095418" duration="6545000" />
+      <workItem from="1546691095418" duration="29901000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7127000" />
+    <option name="totallyTimeSpent" value="30483000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="735" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.3039612" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Image Layers" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info id="Capture Tool" order="6" />
-      <window_info id="Web" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Spring" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.26699835" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Application Servers" order="7" weight="0.3294702" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3283582" />
-      <window_info anchor="bottom" id="Java Enterprise" order="11" />
-      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="13" show_stripe_button="false" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Capture Analysis" order="4" />
-      <window_info anchor="right" id="Maven Projects" order="5" />
-      <window_info anchor="right" id="Database" order="6" />
-      <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Theme Preview" order="8" />
-    </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3039612" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27728376" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -435,8 +530,8 @@
       <window_info anchor="bottom" id="Spring" order="0" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.26699835" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.122719735" />
+      <window_info active="true" anchor="bottom" id="Debug" order="4" visible="true" weight="0.2968491" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" />
@@ -456,13 +551,37 @@
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Theme Preview" order="8" />
-    </layout-to-restore>
+    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/service/impl/UserService.java</url>
+          <line>123</line>
+          <properties />
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/controller/backend/seller/SellerController.java</url>
+          <line>26</line>
+          <properties />
+          <option name="timeStamp" value="21" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/controller/backend/seller/SellerController.java</url>
+          <line>31</line>
+          <properties />
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -479,20 +598,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/controller/portal/BuyerController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/AddressMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/common/Const.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="15" column="24" selection-start-line="15" selection-start-column="24" selection-end-line="15" selection-end-column="24" />
+        <state relative-caret-position="425">
+          <caret line="188" column="11" lean-forward="true" selection-start-line="188" selection-start-column="11" selection-end-line="188" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -515,14 +624,189 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/common/ServerResponse.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="86" column="71" selection-start-line="86" selection-start-column="71" selection-end-line="86" selection-end-column="71" />
+        <state relative-caret-position="317">
+          <caret line="34" column="22" lean-forward="true" selection-start-line="34" selection-start-column="22" selection-end-line="34" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#424#425#0" expanded="true" />
-            <element signature="e#460#461#0" expanded="true" />
-            <element signature="e#951#952#0" expanded="true" />
-            <element signature="e#1019#1020#0" expanded="true" />
+            <element signature="e#835#836#0" expanded="true" />
+            <element signature="e#864#865#0" expanded="true" />
+            <element signature="e#894#895#0" expanded="true" />
+            <element signature="e#920#921#0" expanded="true" />
+            <element signature="e#946#947#0" expanded="true" />
+            <element signature="e#973#974#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/common/TokenCache.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="15" column="55" lean-forward="true" selection-start-line="15" selection-start-column="55" selection-end-line="15" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#693#883#0" expanded="true" />
+            <element signature="e#882#883#0" expanded="true" />
+            <element signature="e#961#962#0" expanded="true" />
+            <element signature="e#986#987#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/util/EncryptUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47">
+          <caret line="37" column="27" lean-forward="true" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/dao/UserMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="47">
+          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.0.RELEASE/spring-web-4.0.0.RELEASE-sources.jar!/org/springframework/web/filter/CharacterEncodingFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="88" selection-start-line="88" selection-end-line="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.0.RELEASE/spring-web-4.0.0.RELEASE-sources.jar!/org/springframework/web/filter/OncePerRequestFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="639">
+          <caret line="115" lean-forward="true" selection-start-line="115" selection-end-line="115" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.0.0.RELEASE/spring-webmvc-4.0.0.RELEASE.jar!/org/springframework/web/servlet/DispatcherServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="405" selection-start-line="405" selection-end-line="405" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.0.0.RELEASE/spring-webmvc-4.0.0.RELEASE.jar!/org/springframework/web/servlet/mvc/method/AbstractHandlerMethodAdapter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.0.0.RELEASE/spring-webmvc-4.0.0.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="417" selection-start-line="417" selection-end-line="417" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.0.0.RELEASE/spring-webmvc-4.0.0.RELEASE.jar!/org/springframework/web/servlet/FrameworkServlet.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="377" selection-start-line="377" selection-end-line="377" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.0.0.RELEASE/spring-webmvc-4.0.0.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/ServletInvocableHandlerMethod.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="75" selection-start-line="75" selection-end-line="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/mybatis/mybatis/3.4.1/mybatis-3.4.1.jar!/org/apache/ibatis/binding/MapperProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="83">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-web/4.0.0.RELEASE/spring-web-4.0.0.RELEASE-sources.jar!/org/springframework/web/method/support/InvocableHandlerMethod.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="223" selection-start-line="223" selection-end-line="223" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/domain/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="139">
+          <caret line="110" selection-start-line="110" selection-end-line="110" />
+          <folding>
+            <element signature="e#2407#2408#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/mappers/UserMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4461">
+          <caret line="191" lean-forward="true" selection-start-line="191" selection-end-line="191" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/controller/portal/BuyerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1400">
+          <caret line="37" column="28" lean-forward="true" selection-start-line="37" selection-start-column="28" selection-end-line="37" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/service/impl/UserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="217">
+          <caret line="97" column="27" lean-forward="true" selection-start-line="97" selection-start-column="27" selection-end-line="97" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2703#2704#0" expanded="true" />
+            <element signature="e#2749#2750#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/common/Const.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="18" column="38" lean-forward="true" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/service/IUserService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/controller/backend/admin/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1025">
+          <caret line="41" column="27" lean-forward="true" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/czn/shoppingmall/controller/backend/seller/SellerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>

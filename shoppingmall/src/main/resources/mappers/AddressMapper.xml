@@ -41,8 +41,8 @@
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{role,jdbcType=INTEGER}, 
       #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{distict,jdbcType=VARCHAR}, 
-      #{street,jdbcType=VARCHAR}, #{postcode,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP})
+      #{street,jdbcType=VARCHAR}, #{postcode,jdbcType=VARCHAR}, now(),
+      now())
   </insert>
   <insert id="insertSelective" parameterType="com.czn.shoppingmall.domain.Address" >
     insert into shopping_mall_address
@@ -122,10 +122,10 @@
         #{postcode,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+        now(),
       </if>
       <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+        now(),
       </if>
     </trim>
   </insert>
@@ -163,10 +163,10 @@
         postcode = #{postcode,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+        create_time = now(),
       </if>
       <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+        update_time = now(),
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -183,8 +183,8 @@
       distict = #{distict,jdbcType=VARCHAR},
       street = #{street,jdbcType=VARCHAR},
       postcode = #{postcode,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
+      create_time = now(),
+      update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

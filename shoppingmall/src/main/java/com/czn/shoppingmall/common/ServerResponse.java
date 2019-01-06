@@ -31,6 +31,18 @@ public class ServerResponse<T> implements Serializable {
         this.data = data;
     }
 
+    public int getStatus() {
+        return status;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public T getData() {
+        return data;
+    }
+
     /**
      * 判断返回消息是正确还是错误,并且该方法再返回参数序列化的时候无效
      * @return
