@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.czn.shoppingmall.domain.Store" >
     <constructor >
       <idArg column="id" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="user_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="seller_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="category_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="store_name" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="status" jdbcType="INTEGER" javaType="java.lang.Integer" />
@@ -14,7 +14,7 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, user_id, category_id, store_name, status, detail, create_time, update_time
+    id, seller_id, category_id, store_name, status, detail, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -27,12 +27,12 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.czn.shoppingmall.domain.Store" >
-    insert into shopping_mall_store (id, user_id, category_id, 
+    insert into shopping_mall_store (id, seller_id, category_id,
       store_name, status, detail,
       create_time, update_time)
-    values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, 
+    values (#{id,jdbcType=INTEGER}, #{sellerId,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER},
       #{storeName,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{detail,jdbcType=VARCHAR},
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+      now(), now())
   </insert>
   <insert id="insertSelective" parameterType="com.czn.shoppingmall.domain.Store" >
     insert into shopping_mall_store
@@ -40,8 +40,8 @@
       <if test="id != null" >
         id,
       </if>
-      <if test="userId != null" >
-        user_id,
+      <if test="sellerId != null" >
+        seller_id,
       </if>
       <if test="categoryId != null" >
         category_id,
@@ -66,8 +66,8 @@
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="userId != null" >
-        #{userId,jdbcType=INTEGER},
+      <if test="sellerId != null" >
+        #{sellerId,jdbcType=INTEGER},
       </if>
       <if test="categoryId != null" >
         #{categoryId,jdbcType=INTEGER},
@@ -82,18 +82,18 @@
         #{detail,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+        now(),
       </if>
       <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+        now(),
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="com.czn.shoppingmall.domain.Store" >
     update shopping_mall_store
     <set >
-      <if test="userId != null" >
-        user_id = #{userId,jdbcType=INTEGER},
+      <if test="sellerId != null" >
+        seller_id = #{sellerId,jdbcType=INTEGER},
       </if>
       <if test="categoryId != null" >
         category_id = #{categoryId,jdbcType=INTEGER},
@@ -108,23 +108,31 @@
         detail = #{detail,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null" >
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+        create_time = now(),
       </if>
       <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+        update_time = now(),
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.czn.shoppingmall.domain.Store" >
     update shopping_mall_store
-    set user_id = #{userId,jdbcType=INTEGER},
+    set seller_id = #{sellerId,jdbcType=INTEGER},
       category_id = #{categoryId,jdbcType=INTEGER},
       store_name = #{storeName,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       detail = #{detail,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
+      create_time = now(),
+      update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectBySellerId" resultMap="BaseResultMap" parameterType="int">
+    select
+    <include refid="Base_Column_List"/>
+    from shopping_mall_store
+    where seller_id = #{sellerId}
+  </select>
+
 </mapper>

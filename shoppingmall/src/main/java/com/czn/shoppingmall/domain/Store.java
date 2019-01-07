@@ -5,7 +5,7 @@ import java.util.Date;
 public class Store {
     private Integer id;
 
-    private Integer userId;
+    private Integer sellerId;
 
     private Integer categoryId;
 
@@ -19,9 +19,9 @@ public class Store {
 
     private Date updateTime;
 
-    public Store(Integer id, Integer userId, Integer categoryId, String storeName, Integer status, String detail, Date createTime, Date updateTime) {
+    public Store(Integer id, Integer sellerId, Integer categoryId, String storeName, Integer status, String detail, Date createTime, Date updateTime) {
         this.id = id;
-        this.userId = userId;
+        this.sellerId = sellerId;
         this.categoryId = categoryId;
         this.storeName = storeName;
         this.status = status;
@@ -42,12 +42,12 @@ public class Store {
         this.id = id;
     }
 
-    public Integer getUserId() {
-        return userId;
+    public Integer getSellerId() {
+        return sellerId;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setSellerId(Integer sellerId) {
+        this.sellerId = sellerId;
     }
 
     public Integer getCategoryId() {

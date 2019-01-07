@@ -2,6 +2,8 @@ package com.czn.shoppingmall.dao;
 
 import com.czn.shoppingmall.domain.Store;
 
+import java.util.List;
+
 public interface StoreMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface StoreMapper {
     int updateByPrimaryKeySelective(Store record);
 
     int updateByPrimaryKey(Store record);
+
+    List<Store> selectBySellerId(Integer sellerId);
 }

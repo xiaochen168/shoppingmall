@@ -9,7 +9,7 @@ shoppingmall/*.iml
 shoppingmall/idea/
 shoppingmall/*.ipr
 shoppingmall/.iws
-.idea
+*.idea
 
 # Log file
 # temp file 
