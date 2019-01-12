@@ -18,4 +18,10 @@ public interface StoreMapper {
     int updateByPrimaryKey(Store record);
 
     List<Store> selectBySellerId(Integer sellerId);
+
+    List<Integer> selectStoreIdByName(String name);
+
+    Integer selectSellerIdByStoreId(Integer storeId);
+
+    List<Integer> selectStoreIdBySellerId(Integer sellerId);
 }

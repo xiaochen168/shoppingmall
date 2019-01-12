@@ -1,5 +1,9 @@
 package com.czn.shoppingmall.common;
 
+import com.google.common.collect.Sets;
+
+import java.util.Set;
+
 /**
  * 项目用到的一些常量定义再此类中
  */
@@ -19,5 +23,10 @@ public class Const {
         int ROLE_SELLER = 1; // 卖家或者商家
         int ROLE_ADMIN = 2; // 商城的管理员
     }
+
+    public interface ProductOrder{
+        Set<String> PRICE_ASC_DESC = Sets.newHashSet("price_asc","price_desc");
+    }
+
 
 }

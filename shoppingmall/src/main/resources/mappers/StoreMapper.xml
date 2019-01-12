@@ -135,4 +135,28 @@
     where seller_id = #{sellerId}
   </select>
 
+  <select id="selectStoreIdByName" resultType="integer" parameterType="string">
+    select
+    id
+    from shopping_mall_store
+    where status = 0
+    and store_name like #{name}
+  </select>
+
+  <select id="selectSellerIdByStoreId" resultType="int" parameterType="int">
+    select
+    seller_id
+    from shopping_mall_store
+    where id = #{storeId}
+  </select>
+
+  <select id="selectStoreIdBySellerId" resultType="integer" parameterType="int">
+    select
+    id
+    from shopping_mall_store
+    where status = 0
+    and seller_id = #{sellerId}
+  </select>
+
+
 </mapper>
