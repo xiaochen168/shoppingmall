@@ -19,7 +19,7 @@ public class Address {
 
     private String city;
 
-    private String distict;
+    private String district;
 
     private String street;
 
@@ -29,7 +29,7 @@ public class Address {
 
     private Date updateTime;
 
-    public Address(Integer id, Integer userId, String name, String phone, String mobile, Integer role, String province, String city, String distict, String street, String postcode, Date createTime, Date updateTime) {
+    public Address(Integer id, Integer userId, String name, String phone, String mobile, Integer role, String province, String city, String district, String street, String postcode, Date createTime, Date updateTime) {
         this.id = id;
         this.userId = userId;
         this.name = name;
@@ -38,7 +38,7 @@ public class Address {
         this.role = role;
         this.province = province;
         this.city = city;
-        this.distict = distict;
+        this.district = district;
         this.street = street;
         this.postcode = postcode;
         this.createTime = createTime;
@@ -113,12 +113,12 @@ public class Address {
         this.city = city == null ? null : city.trim();
     }
 
-    public String getDistict() {
-        return distict;
+    public String getDistrict() {
+        return district;
     }
 
-    public void setDistict(String distict) {
-        this.distict = distict == null ? null : distict.trim();
+    public void setDistrict(String district) {
+        this.district = district == null ? null : district.trim();
     }
 
     public String getStreet() {

@@ -11,7 +11,7 @@
       <arg column="role" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="province" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="city" jdbcType="VARCHAR" javaType="java.lang.String" />
-      <arg column="distict" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="district" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="street" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="postcode" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
@@ -19,7 +19,7 @@
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, user_id, name, phone, mobile, role, province, city, distict, street, postcode, 
+    id, user_id, name, phone, mobile, role, province, city, district, street, postcode,
     create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
@@ -35,12 +35,12 @@
   <insert id="insert" parameterType="com.czn.shoppingmall.domain.Address" >
     insert into shopping_mall_address (id, user_id, name, 
       phone, mobile, role, 
-      province, city, distict, 
+      province, city, district,
       street, postcode, create_time, 
       update_time)
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
       #{phone,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{role,jdbcType=INTEGER}, 
-      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{distict,jdbcType=VARCHAR}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR},
       #{street,jdbcType=VARCHAR}, #{postcode,jdbcType=VARCHAR}, now(),
       now())
   </insert>
@@ -71,8 +71,8 @@
       <if test="city != null" >
         city,
       </if>
-      <if test="distict != null" >
-        distict,
+      <if test="district != null" >
+        district,
       </if>
       <if test="street != null" >
         street,
@@ -112,8 +112,8 @@
       <if test="city != null" >
         #{city,jdbcType=VARCHAR},
       </if>
-      <if test="distict != null" >
-        #{distict,jdbcType=VARCHAR},
+      <if test="district != null" >
+        #{district,jdbcType=VARCHAR},
       </if>
       <if test="street != null" >
         #{street,jdbcType=VARCHAR},
@@ -153,8 +153,8 @@
       <if test="city != null" >
         city = #{city,jdbcType=VARCHAR},
       </if>
-      <if test="distict != null" >
-        distict = #{distict,jdbcType=VARCHAR},
+      <if test="district != null" >
+        district = #{district,jdbcType=VARCHAR},
       </if>
       <if test="street != null" >
         street = #{street,jdbcType=VARCHAR},
@@ -171,6 +171,22 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="selectByIdAndUserId" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List"/>
+    from shopping_mall_address
+    where id = #{addressId}
+    and user_id = #{userId}
+  </select>
+
+  <select id="selectByUserId" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List"/>
+    from shopping_mall_address
+    where user_id = #{userId}
+  </select>
+
   <update id="updateByPrimaryKey" parameterType="com.czn.shoppingmall.domain.Address" >
     update shopping_mall_address
     set user_id = #{userId,jdbcType=INTEGER},
@@ -180,11 +196,55 @@
       role = #{role,jdbcType=INTEGER},
       province = #{province,jdbcType=VARCHAR},
       city = #{city,jdbcType=VARCHAR},
-      distict = #{distict,jdbcType=VARCHAR},
+      district = #{district,jdbcType=VARCHAR},
       street = #{street,jdbcType=VARCHAR},
       postcode = #{postcode,jdbcType=VARCHAR},
       create_time = now(),
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <update id="updateByAddress" parameterType="com.czn.shoppingmall.domain.Address" >
+    update shopping_mall_address
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null" >
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="street != null" >
+        street = #{street,jdbcType=VARCHAR},
+      </if>
+      <if test="postcode != null" >
+        postcode = #{postcode,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null" >
+        update_time = now(),
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+    and user_id = #{userId,jdbcType=INTEGER}
+    and  role = #{role,jdbcType=INTEGER}
+  </update>
+
+  <delete id="deleteByIdAndRoleUserId" parameterType="map">
+    delete from shopping_mall_address
+    where id = #{addressId}
+    and role = #{role}
+    and user_id = #{userId}
+  </delete>
+
 </mapper>
