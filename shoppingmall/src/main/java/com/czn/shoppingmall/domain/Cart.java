@@ -16,19 +16,30 @@ public class Cart {
 
     private Integer quantity;
 
+    private Integer checkStatus;
+
     private Date createTime;
 
     private Date updateTime;
 
-    public Cart(Integer id, Integer productId, Integer buyerId, Integer storeId, BigDecimal price, Integer quantity, Date createTime, Date updateTime) {
+    public Cart(Integer id, Integer productId, Integer buyerId, Integer storeId, BigDecimal price,Integer quantity, Integer checkStatus, Date createTime, Date updateTime) {
         this.id = id;
         this.productId = productId;
         this.buyerId = buyerId;
         this.storeId = storeId;
         this.price = price;
         this.quantity = quantity;
+        this.checkStatus = checkStatus;
         this.createTime = createTime;
         this.updateTime = updateTime;
+    }
+
+    public Integer getCheckStatus() {
+        return checkStatus;
+    }
+
+    public void setCheckStatus(Integer checkStatus) {
+        this.checkStatus = checkStatus;
     }
 
     public Cart() {

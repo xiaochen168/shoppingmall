@@ -24,6 +24,20 @@ public class Const {
         int ROLE_ADMIN = 2; // 商城的管理员
     }
 
+    public interface CartCheck {
+        Integer CART_CHECK = 1;
+        Integer CART_UNCHECK = 0;
+    }
+
+    public interface ProductStatus {
+        int ON_SALE = 0; // 在售
+    }
+
+    public interface CartLimit {
+        Integer LIMIT_SUCCESS = 1; // 限购成功
+        Integer LIMIT_FAIL = 0; // 限购失败
+    }
+
     public interface ProductOrder{
         Set<String> PRICE_ASC_DESC = Sets.newHashSet("price_asc","price_desc");
     }

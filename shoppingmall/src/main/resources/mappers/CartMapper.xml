@@ -9,12 +9,13 @@
       <arg column="store_id" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="price" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
       <arg column="quantity" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="check_status" jdbcType="INTEGER" javaType="java.lang.Integer" />
       <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
     </constructor>
   </resultMap>
   <sql id="Base_Column_List" >
-    id, product_id, buyer_id, store_id, price, quantity, create_time, update_time
+    id, product_id, buyer_id, store_id, price, quantity, check_status, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -22,6 +23,44 @@
     from shopping_mall_cart
     where id = #{id,jdbcType=INTEGER}
   </select>
+
+  <delete id="deleteByCartIdAndBuyerId" parameterType="map">
+    delete from shopping_mall_cart
+    where id = #{cartId}
+    and buyer_id = #{buyerId}
+  </delete>
+
+  <select id="selectByProductIdAndBuyerId" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List"/>
+    from shopping_mall_cart
+    where product_id = #{productId}
+    and buyer_id = #{buyerId}
+  </select>
+
+  <select id="selectByBuyerId" resultMap="BaseResultMap" parameterType="int">
+    select
+    <include refid="Base_Column_List"/>
+    from shopping_mall_cart
+    where buyer_id = #{buyerId}
+  </select>
+
+  <update id="setCheckStatus" parameterType="map">
+    update shopping_mall_cart
+    set check_status = #{checkStatus},
+    update_time = now()
+    where id = #{cartId}
+    and buyer_id = #{buyerId}
+  </update>
+
+  <update id="setAllCheckStatus" parameterType="map">
+    update shopping_mall_cart
+    set check_status = #{checkStatus},
+    update_time = now()
+    where buyer_id = #{buyerId}
+  </update>
+
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from shopping_mall_cart
     where id = #{id,jdbcType=INTEGER}
@@ -29,10 +68,10 @@
   <insert id="insert" parameterType="com.czn.shoppingmall.domain.Cart" >
     insert into shopping_mall_cart (id, product_id, buyer_id, 
       store_id, price, quantity, 
-      create_time, update_time)
+      check_status,create_time, update_time)
     values (#{id,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{buyerId,jdbcType=INTEGER}, 
-      #{storeId,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{quantity,jdbcType=INTEGER}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+      #{storeId,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL}, #{quantity,jdbcType=INTEGER},
+       #{checkStatus,jdbcType=INTEGER},now(), now())
   </insert>
   <insert id="insertSelective" parameterType="com.czn.shoppingmall.domain.Cart" >
     insert into shopping_mall_cart
@@ -54,6 +93,9 @@
       </if>
       <if test="quantity != null" >
         quantity,
+      </if>
+      <if test="checkStatus != null" >
+        check_status,
       </if>
       <if test="createTime != null" >
         create_time,
@@ -81,11 +123,14 @@
       <if test="quantity != null" >
         #{quantity,jdbcType=INTEGER},
       </if>
+      <if test="checkStatus != null" >
+        #{checkStatus,jdbcType=INTEGER},
+      </if>
       <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+        now(),
       </if>
       <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+        now(),
       </if>
     </trim>
   </insert>
@@ -107,11 +152,14 @@
       <if test="quantity != null" >
         quantity = #{quantity,jdbcType=INTEGER},
       </if>
+      <if test="checkStatus != null" >
+        check_status = #{checkStatus,jdbcType=INTEGER},
+      </if>
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+        update_time = now(),
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -123,8 +171,9 @@
       store_id = #{storeId,jdbcType=INTEGER},
       price = #{price,jdbcType=DECIMAL},
       quantity = #{quantity,jdbcType=INTEGER},
+      check_status = #{checkStatus,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
+      update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
