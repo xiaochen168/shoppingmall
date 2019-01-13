@@ -104,5 +104,16 @@ public class CartController {
         return iCartService.setAllCheckStatus(currentUser.getId(), Const.CartCheck.CART_UNCHECK);
     }
 
+    @RequestMapping("count")
+    public ServerResponse count(HttpSession session) {
+        User currentUser = (User)session.getAttribute(Const.CURRENT_USER);
+        if (null == currentUser) {
+            return ServerResponse.createByNeedLogin();
+        }
+        if (!iUserService.checkRole(currentUser.getRole(), Const.Role.ROLE_BUYER)) {
+            return ServerResponse.createByErrorMessage("您不是买家,请使用买家登陆");
+        }
+        return iCartService.count(currentUser.getId());
+    }
 
 }

@@ -9,6 +9,8 @@ public interface ICartService {
 
     public ServerResponse list(Integer buyerId);
 
+    public ServerResponse count(Integer buyerId);
+
     public ServerResponse setCheckStatus(Integer cartId, Integer buyerId, Integer checkStatus);
 
     public ServerResponse setAllCheckStatus(Integer buyerId, Integer checkStatus);

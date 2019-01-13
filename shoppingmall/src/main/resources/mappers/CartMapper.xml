@@ -38,6 +38,14 @@
     and buyer_id = #{buyerId}
   </select>
 
+  <select id="selectCheckCartByBuyerId" resultMap="BaseResultMap" parameterType="int">
+    select
+    <include refid="Base_Column_List"/>
+    from shopping_mall_cart
+    where check_status = 1
+    and buyer_id = #{buyerId}
+  </select>
+
   <select id="selectByBuyerId" resultMap="BaseResultMap" parameterType="int">
     select
     <include refid="Base_Column_List"/>
@@ -176,4 +184,11 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="countByBuyerId" resultType="integer" parameterType="int">
+    select count(1)
+    from shopping_mall_cart
+    where buyer_id = #{buyerId}
+  </select>
+
 </mapper>

@@ -1,10 +1,9 @@
-package com.czn.shoppingmall.domain;
+package com.czn.shoppingmall.vo;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class OrderEntity {
-    private Integer id;
+public class OrderEntityVo {
 
     private Long orderNo;
 
@@ -27,36 +26,6 @@ public class OrderEntity {
     private BigDecimal totalPrice;
 
     private Date createTime;
-
-    private Date updateTime;
-
-    public OrderEntity(Integer id, Long orderNo, Integer buyerId, Integer sellerId, Integer storeId, Integer productId, String productName, String productImageUrl, BigDecimal price, Integer quantity, BigDecimal totalPrice, Date createTime, Date updateTime) {
-        this.id = id;
-        this.orderNo = orderNo;
-        this.buyerId = buyerId;
-        this.sellerId = sellerId;
-        this.storeId = storeId;
-        this.productId = productId;
-        this.productName = productName;
-        this.productImageUrl = productImageUrl;
-        this.price = price;
-        this.quantity = quantity;
-        this.totalPrice = totalPrice;
-        this.createTime = createTime;
-        this.updateTime = updateTime;
-    }
-
-    public OrderEntity() {
-        super();
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 
     public Long getOrderNo() {
         return orderNo;
@@ -103,7 +72,7 @@ public class OrderEntity {
     }
 
     public void setProductName(String productName) {
-        this.productName = productName == null ? null : productName.trim();
+        this.productName = productName;
     }
 
     public String getProductImageUrl() {
@@ -111,7 +80,7 @@ public class OrderEntity {
     }
 
     public void setProductImageUrl(String productImageUrl) {
-        this.productImageUrl = productImageUrl == null ? null : productImageUrl.trim();
+        this.productImageUrl = productImageUrl;
     }
 
     public BigDecimal getPrice() {
@@ -144,13 +113,5 @@ public class OrderEntity {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
-    }
-
-    public Date getUpdateTime() {
-        return updateTime;
-    }
-
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
     }
 }

@@ -198,4 +198,26 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <update id="cancelOrderByOrderNoAndBuyerId" parameterType="map">
+    update shopping_mall_order
+    set status = #{status}
+    where order_no = #{orderNo}
+    and buyer_id = #{buyerId}
+  </update>
+
+  <select id="selectByOrderNo" resultMap="BaseResultMap" parameterType="long">
+    select
+    <include refid="Base_Column_List"/>
+    from shopping_mall_order
+    where order_no = #{orderNo}
+  </select>
+
+  <select id="selectByBuyerId" resultMap="BaseResultMap" parameterType="int">
+    select
+    <include refid="Base_Column_List"/>
+    from shopping_mall_order
+    where buyer_id = #{buyerId}
+  </select>
+
 </mapper>

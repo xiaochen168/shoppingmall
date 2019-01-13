@@ -13,7 +13,7 @@
       <arg column="product_image_url" jdbcType="VARCHAR" javaType="java.lang.String" />
       <arg column="price" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
       <arg column="quantity" jdbcType="INTEGER" javaType="java.lang.Integer" />
-      <arg column="total_price" jdbcType="DECIMAL" javaType="java.lang.Long" />
+      <arg column="total_price" jdbcType="DECIMAL" javaType="java.math.BigDecimal" />
       <arg column="create_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
       <arg column="update_time" jdbcType="TIMESTAMP" javaType="java.util.Date" />
     </constructor>
@@ -41,8 +41,8 @@
     values (#{id,jdbcType=INTEGER}, #{orderNo,jdbcType=BIGINT}, #{buyerId,jdbcType=INTEGER}, 
       #{sellerId,jdbcType=INTEGER}, #{storeId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, 
       #{productName,jdbcType=VARCHAR}, #{productImageUrl,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
-      #{quantity,jdbcType=INTEGER}, #{totalPrice,jdbcType=DECIMAL}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP})
+      #{quantity,jdbcType=INTEGER}, #{totalPrice,jdbcType=DECIMAL}, now(),
+      now())
   </insert>
   <insert id="insertSelective" parameterType="com.czn.shoppingmall.domain.OrderEntity" >
     insert into shopping_mall_order_entity
@@ -122,10 +122,10 @@
         #{totalPrice,jdbcType=DECIMAL},
       </if>
       <if test="createTime != null" >
-        #{createTime,jdbcType=TIMESTAMP},
+        now(),
       </if>
       <if test="updateTime != null" >
-        #{updateTime,jdbcType=TIMESTAMP},
+        now(),
       </if>
     </trim>
   </insert>
@@ -166,7 +166,7 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+        update_time = now(),
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -184,7 +184,28 @@
       quantity = #{quantity,jdbcType=INTEGER},
       total_price = #{totalPrice,jdbcType=DECIMAL},
       create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
+      update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <insert id="batchInsert" parameterType="list">
+    insert into shopping_mall_order_entity(id, order_no, buyer_id, seller_id, store_id, product_id,
+    product_name, product_image_url, price,
+    quantity, total_price, create_time,
+    update_time)
+    values
+    <foreach collection="orderEntityList" index="index" item="item" separator=",">
+      (
+      #{item.id},#{item.orderNo},#{item.buyerId},#{item.sellerId},#{item.storeId},#{item.productId},#{item.productName},#{item.productImageUrl},#{item.price},#{item.quantity},#{item.totalPrice},now(),now()
+      )
+    </foreach>
+  </insert>
+
+  <select id="selectByOrderNo" resultMap="BaseResultMap" parameterType="long">
+    select
+    <include refid="Base_Column_List"/>
+    from shopping_mall_order_entity
+    where order_no = #{orderNo}
+  </select>
+
 </mapper>

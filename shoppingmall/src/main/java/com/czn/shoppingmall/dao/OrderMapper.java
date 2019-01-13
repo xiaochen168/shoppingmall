@@ -1,6 +1,9 @@
 package com.czn.shoppingmall.dao;
 
 import com.czn.shoppingmall.domain.Order;
+import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface OrderMapper {
     int deleteByPrimaryKey(Integer id);
@@ -14,4 +17,10 @@ public interface OrderMapper {
     int updateByPrimaryKeySelective(Order record);
 
     int updateByPrimaryKey(Order record);
+
+    int cancelOrderByOrderNoAndBuyerId(@Param("orderNo") Long order, @Param("buyerId") Integer buyerId, @Param("status") Integer status);
+
+    Order selectByOrderNo(Long orderNo);
+
+    List<Order> selectByBuyerId(Integer buyerId);
 }

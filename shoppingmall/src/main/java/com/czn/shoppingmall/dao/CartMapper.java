@@ -20,6 +20,8 @@ public interface CartMapper {
 
     List<Cart> selectByBuyerId(Integer buyerId);
 
+    List<Cart> selectCheckCartByBuyerId(Integer buyerId);
+
     int setCheckStatus(@Param("cartId")Integer cartId,@Param("buyerId") Integer buyerId,@Param("checkStatus") Integer checkStatus);
 
     int setAllCheckStatus(@Param("buyerId") Integer buyerId,@Param("checkStatus") Integer checkStatus);
@@ -27,4 +29,6 @@ public interface CartMapper {
     int updateByPrimaryKeySelective(Cart record);
 
     int updateByPrimaryKey(Cart record);
+
+    int countByBuyerId(Integer buyerId);
 }
