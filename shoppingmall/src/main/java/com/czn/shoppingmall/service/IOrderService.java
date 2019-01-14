@@ -12,4 +12,8 @@ public interface IOrderService {
 
     public ServerResponse list(Integer buyerId,Integer pageNum, Integer pageSize);
 
+    public ServerResponse  orderStatusByOrderNo(Long orderNo);
+
+    public ServerResponse setOrderStatusByOrderNo(Long orderNo,Integer status);
+
 }

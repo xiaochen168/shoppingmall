@@ -176,7 +176,7 @@
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null" >
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+        update_time = now(),
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -212,6 +212,15 @@
     from shopping_mall_order
     where order_no = #{orderNo}
   </select>
+
+  <select id="selectByOrderNoAndBuyerId" resultMap="BaseResultMap" parameterType="map">
+    select
+    <include refid="Base_Column_List"/>
+    from shopping_mall_order
+    where order_no = #{orderNo}
+    and buyer_id = #{buyerId}
+  </select>
+
 
   <select id="selectByBuyerId" resultMap="BaseResultMap" parameterType="int">
     select

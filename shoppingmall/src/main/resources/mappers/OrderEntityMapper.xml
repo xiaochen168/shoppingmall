@@ -208,4 +208,11 @@
     where order_no = #{orderNo}
   </select>
 
+  <select id="selectOneByOrderNo" resultMap="BaseResultMap" parameterType="long">
+    select
+    <include refid="Base_Column_List"/>
+    from shopping_mall_order_entity
+    where order_no = #{orderNo} limit 1
+  </select>
+
 </mapper>

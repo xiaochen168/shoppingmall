@@ -68,5 +68,17 @@ public class BuyerOrderController {
         return iOrderService.list(currentUser.getId(), pageNum, pageSize);
     }
 
+    @RequestMapping("order_status")
+    public ServerResponse getOrderStatus(Long orderNo, HttpSession session) {
+        User currentUser = (User)session.getAttribute(Const.CURRENT_USER);
+        if (null == currentUser) {
+            return ServerResponse.createByNeedLogin();
+        }
+        if (null == orderNo) {
+            return ServerResponse.createByIllegalArgument();
+        }
+        return iOrderService.orderStatusByOrderNo(orderNo);
+    }
+
 
 }

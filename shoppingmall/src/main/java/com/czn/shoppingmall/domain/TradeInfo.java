@@ -5,6 +5,8 @@ import java.util.Date;
 public class TradeInfo {
     private Integer id;
 
+    private Long orderNo;
+
     private Integer buyerId;
 
     private Integer sellerId;
@@ -13,14 +15,15 @@ public class TradeInfo {
 
     private String tradeNumber;
 
-    private Integer tradeStatus;
+    private String tradeStatus;
 
     private Date createTime;
 
     private Date updateTime;
 
-    public TradeInfo(Integer id, Integer buyerId, Integer sellerId, Integer tradePlatform, String tradeNumber, Integer tradeStatus, Date createTime, Date updateTime) {
+    public TradeInfo(Integer id, Long orderNo, Integer buyerId, Integer sellerId, Integer tradePlatform, String tradeNumber, String tradeStatus, Date createTime, Date updateTime) {
         this.id = id;
+        this.orderNo = orderNo;
         this.buyerId = buyerId;
         this.sellerId = sellerId;
         this.tradePlatform = tradePlatform;
@@ -28,6 +31,14 @@ public class TradeInfo {
         this.tradeStatus = tradeStatus;
         this.createTime = createTime;
         this.updateTime = updateTime;
+    }
+
+    public Long getOrderNo() {
+        return orderNo;
+    }
+
+    public void setOrderNo(Long orderNo) {
+        this.orderNo = orderNo;
     }
 
     public TradeInfo() {
@@ -74,11 +85,11 @@ public class TradeInfo {
         this.tradeNumber = tradeNumber == null ? null : tradeNumber.trim();
     }
 
-    public Integer getTradeStatus() {
+    public String getTradeStatus() {
         return tradeStatus;
     }
 
-    public void setTradeStatus(Integer tradeStatus) {
+    public void setTradeStatus(String tradeStatus) {
         this.tradeStatus = tradeStatus;
     }
 

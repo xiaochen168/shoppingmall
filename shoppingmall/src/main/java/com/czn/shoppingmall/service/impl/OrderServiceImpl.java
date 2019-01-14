@@ -13,6 +13,7 @@ import com.czn.shoppingmall.vo.OrderVo;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 @Service("iOrderService")
@@ -207,6 +209,30 @@ public class OrderServiceImpl implements IOrderService {
             orderEntityList.add(orderEntity);
         }
         return ServerResponse.createBySuccessData(orderEntityList);
+    }
+
+
+    public ServerResponse  orderStatusByOrderNo(Long orderNo) {
+        Order order = orderMapper.selectByOrderNo(orderNo);
+        if (null == orderNo) {
+            return ServerResponse.createByErrorMessage("订单不存在");
+        }
+        Map<String,Object> resultMap = Maps.newHashMap();
+        resultMap.put("order_status",Const.OrderStatusEnum.codeOf(order.getStatus()));
+        return ServerResponse.createBySuccessData(resultMap);
+    }
+
+    public ServerResponse setOrderStatusByOrderNo(Long orderNo,Integer status) {
+        Order order = orderMapper.selectByOrderNo(orderNo);
+        if (null == order) {
+            return ServerResponse.createByErrorMessage("订单不存在");
+        }
+        order.setStatus(status);
+        int rowCount = orderMapper.updateByPrimaryKeySelective(order);
+        if (rowCount > 0) {
+            return ServerResponse.createBySuccess();
+        }
+        return ServerResponse.createByError();
     }
 
 

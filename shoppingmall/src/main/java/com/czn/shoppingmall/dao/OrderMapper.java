@@ -20,7 +20,10 @@ public interface OrderMapper {
 
     int cancelOrderByOrderNoAndBuyerId(@Param("orderNo") Long order, @Param("buyerId") Integer buyerId, @Param("status") Integer status);
 
+    Order selectByOrderNoAndBuyerId(@Param("orderNo") Long order, @Param("buyerId") Integer buyerId);
+
     Order selectByOrderNo(Long orderNo);
 
     List<Order> selectByBuyerId(Integer buyerId);
+    
 }
