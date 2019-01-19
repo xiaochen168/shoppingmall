@@ -5,6 +5,10 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.io.Serializable;
 
+/**
+ * 服务端返回给前端的相应对象，封装了状态码、状态描述、数据
+ * @param <T>
+ */
 @JsonSerialize(include =  JsonSerialize.Inclusion.NON_NULL)
 public class ServerResponse<T> implements Serializable {
     private int status;

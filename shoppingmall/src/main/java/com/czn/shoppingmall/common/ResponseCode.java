@@ -1,5 +1,8 @@
 package com.czn.shoppingmall.common;
 
+/**
+ * 服务端状态码以及状态码描述枚举类
+ */
 public enum ResponseCode {
     SUCCESS(0,"SUCCESS"),
     ERROR(1,"ERROR"),

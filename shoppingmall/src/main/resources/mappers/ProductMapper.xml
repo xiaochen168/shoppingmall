@@ -192,7 +192,7 @@
     select
     <include refid="Base_Column_List"/>
     from shopping_mall_product
-    where status = 0
+    where status = 1
     <if test="name!=null">
       and name like #{name}
     </if>

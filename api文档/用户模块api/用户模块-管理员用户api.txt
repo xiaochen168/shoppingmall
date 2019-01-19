@@ -1,0 +1,56 @@
+
+1.1 管理员注册接口
+请求方式: post
+http://localhost:8088/admin/register
+参数说明
+username   用户名
+password   密码
+realname   真名
+email      邮箱
+phone      手机号码
+question   密码找回问题
+answer     密码找回问题答案
+
+成功样例
+
+{
+  "status": 0,
+  "msg": "注册成功"
+}
+
+失败样例
+{
+  "status": 1,
+  "msg": "用户名已存在"
+}
+
+1.2 管理员登陆接口
+请求方式：get
+http://localhost:8088/admin/login
+参数说明
+username    用户名
+password    密码
+
+成功样例
+{
+  "status": 0,
+  "data": {
+    "id": 7,
+    "username": "admin-czn",
+    "password": "",
+    "realname": "管理员头子",
+    "email": "admin12345@163.com",
+    "phone": "1775178432",
+    "question": "最喜欢的水果",
+    "answer": "橘子",
+    "role": 2,
+    "createTime": 1547921302000,
+    "updateTime": 1547921302000
+  }
+}
+失败样例
+{
+  "status": 1,
+  "msg": "密码错误"
+}
+

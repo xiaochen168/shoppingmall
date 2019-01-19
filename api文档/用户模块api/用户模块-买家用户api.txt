@@ -1,0 +1,257 @@
+一 买家用户
+接口说明：使用的都是restful风格的接口
+
+1.1 买家注册接口
+请求方式: post
+http://localhost:8088//buyer/register
+参数说明
+username   用户名
+password   密码
+realname   真名
+email      邮箱
+phone      手机号码
+question   密码找回问题
+answer     密码找回问题答案
+
+成功样例
+
+{
+  "status": 0,
+  "msg": "注册成功"
+}
+
+失败样例
+{
+  "status": 1,
+  "msg": "用户名已存在"
+}
+
+1.2 买家登陆接口
+请求方式：get
+http://localhost:8088//buyer/login
+参数说明
+username    用户名
+password    密码
+
+成功样例
+{
+  "status": 0,
+  "data": {
+    "id": 5,
+    "username": "czn",
+    "password": "",
+    "realname": "老陈",
+    "email": "czn@163.com",
+    "phone": "1772345",
+    "question": "最喜欢的电影",
+    "answer": "功夫",
+    "role": 0,
+    "createTime": 1547908319000,
+    "updateTime": 1547908319000
+  }
+}
+
+失败样例
+{
+  "status": 1,
+  "msg": "密码错误"
+}
+
+
+1.3 买家修改个人信息接口
+请求方式：post
+http://localhost:8088//buyer/update_information
+参数说明
+realname   名称
+email      邮箱
+phone      手机号码
+question   密码找回问题
+answer     密码找回问题答案
+
+成功样例
+{
+  "status": 0,
+  "msg": "个人信息修改成功",
+  "data": {
+    "id": 5,
+    "username": "czn",
+    "password": null,
+    "realname": "老陈头",
+    "email": "czn1223@163.com",
+    "phone": "1772345",
+    "question": "最喜欢的电影",
+    "answer": "功夫",
+    "role": 0,
+    "createTime": null,
+    "updateTime": null
+  }
+}
+失败样例
+{
+  "status": 1,
+  "msg": "更新失败,该邮箱已经被人使用"
+}
+
+
+
+1.4 获取个人信息接口
+请求方式：get
+http://localhost:8088//buyer/get_information
+
+成功样例
+{
+  "status": 0,
+  "msg": "个人信息修改成功",
+  "data": {
+    "id": 5,
+    "username": "czn",
+    "password": null,
+    "realname": "老陈头",
+    "email": "czn1223@163.com",
+    "phone": "1772345",
+    "question": "最喜欢的电影",
+    "answer": "功夫",
+    "role": 0,
+    "createTime": null,
+    "updateTime": null
+  }
+}
+失败样例
+{
+  "status": 1,
+  "msg": "NEED_LOGIN"
+}
+
+
+1.5 有效性检查接口（检查用户名/邮箱是否已经被别人注册使用）
+请求方式：get
+http://localhost:8088//buyer/check_valid?loginName=czn&loginType=username
+或者http://localhost:8088//buyer/check_valid?loginName=czn&loginType=email
+
+成功样例
+{
+  "status": 0,
+  "msg": "个人信息修改成功",
+  "data": {
+    "id": 5,
+    "username": "czn",
+    "password": null,
+    "realname": "老陈头",
+    "email": "czn1223@163.com",
+    "phone": "1772345",
+    "question": "最喜欢的电影",
+    "answer": "功夫",
+    "role": 0,
+    "createTime": null,
+    "updateTime": null
+  }
+}
+失败样例
+{
+  "status": 1,
+  "msg": "NEED_LOGIN"
+}
+
+{
+  "status": 1,
+  "msg": "用户名已存在"
+}
+
+
+1.6 获取密码找回问题（通过用户名获取）
+请求方式：get
+http://localhost:8088//buyer/get_question
+参数说明
+username  用户名
+
+
+请求示例：   http://localhost:8088//buyer/get_question?username=czn
+
+成功样例
+{
+  "status": 0,
+  "msg": "最喜欢的电影"
+}
+失败样例
+{
+  "status": 1,
+  "msg": "用户不存在"
+}
+
+
+1.7 密码找回问题回答
+请求方式：get/post
+http://localhost:8088//buyer/check_answer
+参数说明
+username  用户名
+question  密码找回问题
+answer    密码找回问题回答
+
+
+请求示例：   http://localhost:8088/buyer/check_answer?username=czn&question=最喜欢的电影&answer=功夫
+
+成功样例
+{
+  "status": 0,
+  "data": {
+    "answerToken": "76865349-5371-48ce-b908-133bf4de29a8"
+  }
+}
+失败样例
+{
+  "status": 1,
+  "msg": "密码找回答案回答错误"
+}
+
+1.7 密码找回之重设密码
+请求方式：get/post
+http://localhost:8088//buyer/forget_reset_password
+参数说明
+username  用户名
+newPassword  新密码
+token    令牌（1.7中正确回答密码找回问题得到得answerToken）
+
+
+请求示例：   http://localhost:8088/buyer/forget_reset_password?username=czn&newPassword=12345&token=76865349-5371-48ce-b908-133bf4de29a8
+
+成功样例
+{
+  "status": 0,
+  "msg": "重置密码成功"
+}
+失败样例
+{
+  "status": 1,
+  "msg": "token错误,请重新获取token"
+}
+
+
+1.8 登陆状态下的重置密码
+请求方式：get/post
+http://localhost:8088//buyer/reset_password
+参数说明
+password  原密码
+newPassword  新密码
+
+
+请求示例：   http://localhost:8088/buyer/reset_password?password=123&newPassword=12345
+
+成功样例
+{
+  "status": 0,
+  "msg": "重置密码成功"
+}
+失败样例
+{
+  "status": 1,
+  "msg": "原密码错误"
+}
+
+
+
+
+
+
+
+
+

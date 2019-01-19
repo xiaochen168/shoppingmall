@@ -22,6 +22,13 @@ public class BuyerController {
     @Autowired
     private IUserService iUserService;
 
+    /**
+     * 登陆接口
+     * @param username
+     * @param password
+     * @param session
+     * @return
+     */
     @RequestMapping(value = "login")
     public ServerResponse login(String username, String password, HttpSession session){
         if (StringUtils.isBlank(username) || StringUtils.isBlank(password)){
@@ -40,6 +47,11 @@ public class BuyerController {
         return ServerResponse.createByErrorMessage("非买家用户");
     }
 
+    /**
+     * 注册接口
+     * @param user
+     * @return
+     */
     @RequestMapping(value = "register", method = RequestMethod.POST)
     public ServerResponse register(User user){
         if (null == user) {
@@ -49,6 +61,12 @@ public class BuyerController {
         return iUserService.register(user);
     }
 
+    /**
+     * 更新个人信息接口
+     * @param user
+     * @param session
+     * @return
+     */
     @RequestMapping(value = "update_information", method = RequestMethod.POST)
     public ServerResponse update(User user,HttpSession session){
         User currentUser = (User) session.getAttribute(Const.CURRENT_USER);
@@ -70,6 +88,11 @@ public class BuyerController {
         return response;
     }
 
+    /**
+     * 获取个人信息接口
+     * @param session
+     * @return
+     */
     @RequestMapping("get_information")
     public ServerResponse getUserInformation(HttpSession session) {
         User currentUser = (User) session.getAttribute(Const.CURRENT_USER);
@@ -79,6 +102,12 @@ public class BuyerController {
         return iUserService.getUserInformation(currentUser.getId());
     }
 
+    /**
+     * 接茬用户名/邮箱接口，检查是否已经被人使用注册过
+     * @param loginName
+     * @param loginType
+     * @return
+     */
     @RequestMapping("check_valid")
     public ServerResponse checkValid(String loginName, String loginType) {
         if (StringUtils.isBlank(loginName) || StringUtils.isBlank(loginType)) {

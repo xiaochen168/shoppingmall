@@ -24,6 +24,9 @@ public class Const {
         int ROLE_ADMIN = 2; // 商城的管理员
     }
 
+    /**
+     * 支付类型枚举了，目前只支持线上支付
+     */
     public enum PaymentTypeEnum {
         ONLINE_PAY(1,"在线支付");
 
@@ -59,6 +62,9 @@ public class Const {
         String RESPONSE_FAILED = "failed";
     }
 
+    /**
+     * 订单状态枚举类
+     */
     public enum OrderStatusEnum {
         CANCELED(0,"已取消"),
         NO_PAY(10,"未付款"),
@@ -91,6 +97,9 @@ public class Const {
         }
     }
 
+    /**
+     * 支付平台枚举类，目前只支持支付宝
+     */
     public enum PayPlatformEnum{
         ALIPAY(1,"支付宝");
         private int code;
@@ -117,23 +126,34 @@ public class Const {
         }
     }
 
+    /**
+     * 购物车商品状态 0未选中 1选中
+     */
     public interface CartCheck {
         Integer CART_CHECK = 1;
         Integer CART_UNCHECK = 0;
     }
 
+    /**
+     * 商品状态
+     */
     public interface ProductStatus {
-        int ON_SALE = 0; // 在售
+        int ON_SALE = 1; // 在售
     }
 
+    /**
+     * 添加购物车数量限制
+     */
     public interface CartLimit {
         Integer LIMIT_SUCCESS = 1; // 限购成功
         Integer LIMIT_FAIL = 0; // 限购失败
     }
 
+    /**
+     * 商品排序，搜索到的商品按价格升序、降序
+     */
     public interface ProductOrder{
         Set<String> PRICE_ASC_DESC = Sets.newHashSet("price_asc","price_desc");
     }
-
 
 }

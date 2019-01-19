@@ -19,6 +19,14 @@ public class SellerController {
     @Autowired
     private IUserService iUserService;
 
+
+    /**
+     * 商家用户登陆
+     * @param username
+     * @param password
+     * @param session
+     * @return
+     */
     @RequestMapping(value = "login")
     public ServerResponse login(String username, String password, HttpSession session){
         if (StringUtils.isBlank(username) || StringUtils.isBlank(password)){
@@ -37,6 +45,11 @@ public class SellerController {
         return ServerResponse.createByErrorMessage("非商家用户");
     }
 
+    /**
+     * 注册商家用户
+     * @param user
+     * @return
+     */
     @RequestMapping(value = "register", method = RequestMethod.POST)
     public ServerResponse register(User user){
         if (null == user) {
@@ -46,11 +59,20 @@ public class SellerController {
         return iUserService.register(user);
     }
 
+    /**
+     * 更新个人信息
+     * @param user
+     * @param session
+     * @return
+     */
     @RequestMapping(value = "update_information", method = RequestMethod.POST)
     public ServerResponse update(User user,HttpSession session){
         User currentUser = (User) session.getAttribute(Const.CURRENT_USER);
         if (null == currentUser) {
             return ServerResponse.createByNeedLogin("用户未登录,请先登陆");
+        }
+        if (!iUserService.checkRole(currentUser.getRole(),Const.Role.ROLE_SELLER)) {
+            return ServerResponse.createByErrorMessage("不是商家，无法修改商家信息");
         }
         user.setId(currentUser.getId());
         user.setUsername(currentUser.getUsername());
@@ -67,6 +89,11 @@ public class SellerController {
         return response;
     }
 
+    /**
+     * 获取商家个人信息
+     * @param session
+     * @return
+     */
     @RequestMapping("get_information")
     public ServerResponse getUserInformation(HttpSession session) {
         User currentUser = (User) session.getAttribute(Const.CURRENT_USER);
