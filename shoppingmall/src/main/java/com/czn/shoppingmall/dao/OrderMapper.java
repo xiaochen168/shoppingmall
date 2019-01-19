@@ -25,5 +25,5 @@ public interface OrderMapper {
     Order selectByOrderNo(Long orderNo);
 
     List<Order> selectByBuyerId(Integer buyerId);
-    
+
 }
