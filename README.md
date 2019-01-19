@@ -3,7 +3,7 @@ shoppingmall
 
 项目主要用到的技术以及作用
 
-spring、springmvc、mybatis、mysql、nginx、ftp
+spring、springmvc、mybatis、mysql、nginx、ftp、maven-3.5.4、JDK1.8
 
 spring做后端整合框架
 
@@ -12,6 +12,8 @@ springmvc前端控制和请求转发、文件上传处理、http消息转换
 mysql数据库做数据存储
 
 mybatis做数据访问框架
+
+maven用作项目构建工具
 
 同时还是用了mybatis三剑客
 
