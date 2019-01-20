@@ -13,6 +13,6 @@ public interface ICategoryService {
 
     public ServerResponse getCategoryChildByParentId(Integer parentId);
 
-    public ServerResponse getAllChildCategoryIdByParentId(Integer categoryId);
+    public ServerResponse getAllChildCategoryIdByParentId(Integer parentId);
 
 }

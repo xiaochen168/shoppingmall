@@ -1,0 +1,26 @@
+1.1  对订单进行支付
+请求方式：  get/post
+http://localhost:8088/buyer/pay/payOrder
+参数说明
+orderNo   支付订单号
+
+示例 http://localhost:8088/buyer/pay/payOrder?orderNo=1547970927879
+qrUrl是返回支付二维码的地址，存储在FTP服务器上，直接复制到网页即可打开
+
+{
+  "status": 0,
+  "data": {
+    "orderNo": "1547970927879",
+    "qrUrl": "http://img.cznshoppingmall.com/qr-1547970927879.png"
+  }
+}
+
+1.2 支付宝付款成功回调接口（支付宝付款成功之后，支付宝会调用这个接口通知商城系统付款成功）
+请求方式： get/post
+http://localhost:8088/buyer/pay/alipay_callback
+
+示例
+{
+  "status": 0,
+  "msg": "success"
+}

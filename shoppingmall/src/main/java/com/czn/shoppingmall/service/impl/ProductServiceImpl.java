@@ -74,9 +74,9 @@ public class ProductServiceImpl implements IProductService {
         product.setStatus(status);
         int rowCount = productMapper.updateByPrimaryKeySelective(product);
         if (rowCount > 0) {
-            return ServerResponse.createBySuccessMessage("店铺状态修改成功");
+            return ServerResponse.createBySuccessMessage("商品状态修改成功");
         }
-        return ServerResponse.createByErrorMessage("店铺状态修改失败");
+        return ServerResponse.createByErrorMessage("商品状态修改失败");
     }
 
     public ServerResponse getProductDetail(Integer productId) {
@@ -173,7 +173,7 @@ public class ProductServiceImpl implements IProductService {
         PageHelper.startPage(pageNum,pageSize);
         if (CollectionUtils.isEmpty(storeIdList)) {
             PageInfo pageInfo = new PageInfo(productVoList);
-            ServerResponse.createBySuccessData(pageInfo);
+            return ServerResponse.createBySuccessData(pageInfo);
         }
         if (StringUtils.isNotBlank(orderBy) && Const.ProductOrder.PRICE_ASC_DESC.contains(orderBy)) {
             String[] orderArray = orderBy.split("_");

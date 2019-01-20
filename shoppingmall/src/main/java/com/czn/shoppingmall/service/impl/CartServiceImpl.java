@@ -74,7 +74,11 @@ public class CartServiceImpl implements ICartService {
     }
 
     public ServerResponse count(Integer buyerId) {
-        int count = cartMapper.countByBuyerId(buyerId);
+        int count = 0;
+        List<Cart> cartList = cartMapper.selectByBuyerId(buyerId);
+        for (Cart cart : cartList) {
+            count += cart.getQuantity();
+        }
         return ServerResponse.createBySuccessData(count);
     }
 

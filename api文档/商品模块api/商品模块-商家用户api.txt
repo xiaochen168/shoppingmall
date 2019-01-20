@@ -1,0 +1,172 @@
+
+1.1 商家新增商品接口
+请求方式: post
+http://localhost:8088/seller/product/add_or_update
+参数说明
+id               商品的id（有字段则是更新商品信息，没有则是新增一个商品）
+categoryId       分类Id(该商品是属于什么类别的，比如新增iphone手机则填手机分类Id)
+storeId          店铺Id(该商品属于哪个店的)
+name             商品名字
+subtitle         商品副标题
+detail           商品的详细描述
+mainImageUrl     商品主图的url地址
+subImagesUrl     商品子图的url地址
+price            商品的价格
+stock            商品的库存
+
+成功样例
+
+{
+  "status": 0,
+  "msg": "添加商品成功"
+}
+
+失败样例
+{
+  "status": 1,
+  "msg": "添加商品失败"
+}
+
+1.2 获取商品详情接口
+请求方式: get/post
+http://localhost:8088/seller/product/get_detail
+参数说明
+productId   商品的Id
+
+成功样例
+
+{
+  "status": 0,
+  "data": {
+    "id": 3,
+    "categoryId": 100001,
+    "storeId": 2,
+    "name": "iphoneSE 64G",
+    "subtitle": "副标题",
+    "detail": "iphoneSE的详细描述",
+    "mainImageUrl": null,
+    "subImagesUrl": null,
+    "price": 1888,
+    "stock": 1000,
+    "status": 1,
+    "createTime": 1547963518000,
+    "updateTime": 1547963518000
+  }
+}
+失败样例
+{
+  "status": 1,
+  "msg": "该商品不存在"
+}
+
+
+1.3 获取该商家的所有商品详情接口
+请求方式: get/post
+http://localhost:8088/seller/product/list
+
+成功样例
+
+{
+  "status": 0,
+  "data": [
+    {
+      "id": 1,
+      "categoryId": 100001,
+      "storeId": 1,
+      "name": "iphone7 128G",
+      "subtitle": "新品上市，手慢无",
+      "detail": "ipone7 超大级别128G存储，靓丽外观，时尚大气，潮流上档次",
+      "mainImageUrl": null,
+      "subImagesUrl": null,
+      "price": 5999,
+      "stock": 104,
+      "status": 1,
+      "createTime": 1547293784000,
+      "updateTime": 1547480798000
+    },
+    {
+      "id": 2,
+      "categoryId": 100001,
+      "storeId": 1,
+      "name": "sansung",
+      "subtitle": "新品上市，手慢无",
+      "detail": "三星爆炸机",
+      "mainImageUrl": null,
+      "subImagesUrl": null,
+      "price": 3999,
+      "stock": 376,
+      "status": 1,
+      "createTime": 1547294942000,
+      "updateTime": 1547480798000
+    }
+  ]
+}
+
+
+1.5 设置商品状态接口
+请求方式: get/post
+http://localhost:8088/seller/product/set_status
+参数说明
+productId    商品的Id
+status       状态（0 下架  1 在售）
+
+成功样例
+
+{
+  "status": 0,
+  "msg": "商品状态修改成功"
+}
+
+失败样例
+{
+  "status": 1,
+  "msg": "要修改的商品不存在"
+}
+
+
+1.6 商品图片上传接口   （在项目的index页面）
+请求方式: get/post
+http://localhost:8088/seller/product/upload
+参数说明
+upload_file   要上传的图片文件对象（必须从电脑上选择一个图片才能上传）
+
+成功样例
+
+{
+  "status": 0,
+  "msg": "图片上传成功"
+}
+
+失败样例
+{
+  "status": 1,
+  "msg": "图片上传失败"
+}
+
+
+
+
+1.4 富文本上传接口  （在项目的index页面）
+请求方式: get/post
+http://localhost:8088/seller/product/rich_text_upload
+参数说明
+upload_file   要上传的富文本文件对象（必须从电脑上选择一个图片才能上传）
+
+成功样例
+
+{
+  "status": 0,
+  "msg": "富文本上传成功"
+}
+
+失败样例
+{
+  "status": 1,
+  "msg": "富文本上传失败"
+}
+
+
+
+
+
+

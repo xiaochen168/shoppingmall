@@ -139,7 +139,7 @@
     select
     id
     from shopping_mall_store
-    where status = 0
+    where status = 1
     and store_name like #{name}
   </select>
 
@@ -154,7 +154,7 @@
     select
     id
     from shopping_mall_store
-    where status = 0
+    where status = 1
     and seller_id = #{sellerId}
   </select>
 

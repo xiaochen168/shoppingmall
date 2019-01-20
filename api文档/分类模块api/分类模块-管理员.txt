@@ -1,0 +1,214 @@
+只有管理员用户有权限对分类模块进行操作
+
+1.1  新增分类接口
+请求方式:  get/post
+http://localhost:8088/admin/category/add
+参数说明
+parentId    父类Id（比如手机的父类是电子产品，就填电子产品Id）
+name        分类名
+detail      分类描述
+
+成功样例
+{
+  "status": 0,
+  "msg": "添加分类成功"
+}
+
+失败样例
+{
+  "status": 1,
+  "msg": "添加分类失败"
+}
+
+
+1.2  获取分类详情接口
+请求方式:  get/post
+http://localhost:8088/admin/category/get_category_detail
+参数说明
+categoryId       分类的Id
+
+
+成功样例
+{
+  "status": 0,
+  "data": {
+    "id": 100032,
+    "parentId": 0,
+    "name": "一切球类",
+    "detail": "篮球、足球、羽毛球等各种球类",
+    "status": 1,
+    "orderBy": null,
+    "createTime": 1547957236000,
+    "updateTime": 1547957236000
+  }
+}
+
+失败样例
+{
+  "status": 1,
+  "msg": "获取该分类的信息失败"
+}
+
+
+
+1.3  设置分类名接口
+请求方式:  get/post
+http://localhost:8088/admin/category/set_category_name
+参数说明
+categoryId       分类的Id
+categoryName     要设置的名字
+
+
+成功样例
+{
+  "status": 0,
+  "msg": "分类名更新成功"
+}
+
+失败样例
+{
+  "status": 1,
+  "msg": "分类名更新失败"
+}
+
+
+1.4  查询这个分类的直接子类（比如手机、电脑等分类的父类是电子产品分类）
+请求方式:  get/post
+http://localhost:8088/admin/category/direct_category_child
+参数说明
+parentId       分类的Id
+
+
+成功样例
+{
+  "status": 0,
+  "data": [
+    {
+      "id": 100011,
+      "parentId": 100002,
+      "name": "电脑",
+      "detail": null,
+      "status": 1,
+      "orderBy": null,
+      "createTime": 1490431998000,
+      "updateTime": 1490431998000
+    },
+    {
+      "id": 100012,
+      "parentId": 100002,
+      "name": "手机",
+      "detail": null,
+      "status": 1,
+      "orderBy": null,
+      "createTime": 1490432007000,
+      "updateTime": 1490432007000
+    },
+    {
+      "id": 100013,
+      "parentId": 100002,
+      "name": "平板电脑",
+      "detail": null,
+      "status": 1,
+      "orderBy": null,
+      "createTime": 1490432015000,
+      "updateTime": 1490432015000
+    },
+    {
+      "id": 100014,
+      "parentId": 100002,
+      "name": "数码相机",
+      "detail": null,
+      "status": 1,
+      "orderBy": null,
+      "createTime": 1490432036000,
+      "updateTime": 1490432036000
+    },
+    {
+      "id": 100015,
+      "parentId": 100002,
+      "name": "3C配件",
+      "detail": null,
+      "status": 1,
+      "orderBy": null,
+      "createTime": 1490432047000,
+      "updateTime": 1490432047000
+    },
+    {
+      "id": 100031,
+      "parentId": 100002,
+      "name": "mac",
+      "detail": "苹果笔记本大促销5折起",
+      "status": 1,
+      "orderBy": null,
+      "createTime": 1546795898000,
+      "updateTime": 1546795898000
+    }
+  ]
+}
+
+失败样例
+{
+  "status": 1,
+  "msg": "未找到当前分类的子分类"
+}
+
+
+
+
+
+1.5  递归查询这个分类的所有子孙类别的Id（比如电子产品分类下有手机、电脑，手机分类下有苹果手机、安卓手机；电脑分类下有苹果电脑、联想电脑等；该接口会递归查出所有子孙类别）
+请求方式:  get/post
+http://localhost:8088/admin/category/all_category_child
+参数说明
+parentId       分类的Id
+
+
+成功样例
+{
+  "status": 0,
+  "data": [
+    100003,
+    100001,
+    100014,
+    100025,
+    100006,
+    100020,
+    100022,
+    100029,
+    100023,
+    100031,
+    100010,
+    100009,
+    100002,
+    100012,
+    100015,
+    100021,
+    100011,
+    100027,
+    100004,
+    100032,
+    100017,
+    100028,
+    100007,
+    100019,
+    100018,
+    100024,
+    100033,
+    100008,
+    100016,
+    100013,
+    100030,
+    100005,
+    100026
+  ]
+}
+失败样例
+{
+  "status": 2,
+  "msg": "ILLEGAL_ARGUMENT"
+}
+
+
+
+
+

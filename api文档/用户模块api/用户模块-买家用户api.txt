@@ -3,7 +3,7 @@
 
 1.1 买家注册接口
 请求方式: post
-http://localhost:8088//buyer/register
+http://localhost:8088/buyer/register
 参数说明
 username   用户名
 password   密码
@@ -28,7 +28,7 @@ answer     密码找回问题答案
 
 1.2 买家登陆接口
 请求方式：get
-http://localhost:8088//buyer/login
+http://localhost:8088/buyer/login
 参数说明
 username    用户名
 password    密码
@@ -60,7 +60,7 @@ password    密码
 
 1.3 买家修改个人信息接口
 请求方式：post
-http://localhost:8088//buyer/update_information
+http://localhost:8088/buyer/update_information
 参数说明
 realname   名称
 email      邮箱
@@ -96,7 +96,7 @@ answer     密码找回问题答案
 
 1.4 获取个人信息接口
 请求方式：get
-http://localhost:8088//buyer/get_information
+http://localhost:8088/buyer/get_information
 
 成功样例
 {
@@ -125,7 +125,7 @@ http://localhost:8088//buyer/get_information
 
 1.5 有效性检查接口（检查用户名/邮箱是否已经被别人注册使用）
 请求方式：get
-http://localhost:8088//buyer/check_valid?loginName=czn&loginType=username
+http://localhost:8088/buyer/check_valid?loginName=czn&loginType=username
 或者http://localhost:8088//buyer/check_valid?loginName=czn&loginType=email
 
 成功样例
@@ -160,12 +160,12 @@ http://localhost:8088//buyer/check_valid?loginName=czn&loginType=username
 
 1.6 获取密码找回问题（通过用户名获取）
 请求方式：get
-http://localhost:8088//buyer/get_question
+http://localhost:8088/buyer/get_question
 参数说明
 username  用户名
 
 
-请求示例：   http://localhost:8088//buyer/get_question?username=czn
+请求示例：   http://localhost:8088/buyer/get_question?username=czn
 
 成功样例
 {
@@ -181,7 +181,7 @@ username  用户名
 
 1.7 密码找回问题回答
 请求方式：get/post
-http://localhost:8088//buyer/check_answer
+http://localhost:8088/buyer/check_answer
 参数说明
 username  用户名
 question  密码找回问题
@@ -228,7 +228,7 @@ token    令牌（1.7中正确回答密码找回问题得到得answerToken）
 
 1.8 登陆状态下的重置密码
 请求方式：get/post
-http://localhost:8088//buyer/reset_password
+http://localhost:8088/buyer/reset_password
 参数说明
 password  原密码
 newPassword  新密码

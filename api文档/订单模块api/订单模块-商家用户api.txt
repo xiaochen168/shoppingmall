@@ -1,0 +1,13 @@
+
+1.1 对订单商品进行发货
+请求方式： get/post
+http://localhost:8088/seller/order/send_goods
+参数说明：
+orderNo   订单号
+
+示例
+http://localhost:8088/seller/order/send_goods?orderNo=1547970927879
+{
+  "status": 0,
+  "msg": "订单发货成功"
+}

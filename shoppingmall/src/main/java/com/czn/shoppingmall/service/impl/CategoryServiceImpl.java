@@ -57,12 +57,12 @@ public class CategoryServiceImpl implements ICategoryService {
 
     /**
      * 获取该分类下所有子类的Id
-     * @param categoryId
+     * @param parentId
      * @return
      */
-    public ServerResponse getAllChildCategoryIdByParentId(Integer categoryId) {
+    public ServerResponse getAllChildCategoryIdByParentId(Integer parentId) {
         Set<Category> categorySet = Sets.newHashSet();
-        deepCategoryIdByParentId(categorySet, categoryId);
+        deepCategoryIdByParentId(categorySet, parentId);
         List<Integer> categoryIdList = Lists.newArrayList();
         if (CollectionUtils.isNotEmpty(categorySet)) {
             for(Category category: categorySet){

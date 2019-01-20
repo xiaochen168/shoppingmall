@@ -1,0 +1,17 @@
+商家用户的地址接口和买家的用法完全一样
+
+
+1.1 添加发货地址接口  
+http://localhost:8088/seller/address/add
+
+1.2 修改发货地址接口  
+http://localhost:8088/seller/address/update
+
+1.3 发货地址详情接口  
+http://localhost:8088/seller/address/query
+
+1.4 删除发货地址接口
+http://localhost:8088/seller/address/delete
+
+1.5 获取发货地址列表
+http://localhost:8088/seller/address/list

@@ -1,0 +1,514 @@
+
+1.1 创建订单接口
+请求方式： get/post
+http://localhost:8088/buyer/order/create
+
+通过购物车中的选中物品创建订单，同时给订单一个收货地址
+参数说明：
+addressId   收货地址Id
+
+示例
+{
+  "status": 0,
+  "msg": "订单创建成功",
+  "data": {
+    "orderNo": 1547970185412,
+    "payment": 35768,
+    "payType": 1,
+    "payTypeDesc": "在线支付",
+    "postage": 0,
+    "status": 10,
+    "statusDesc": "未付款",
+    "payTime": "",
+    "sendTime": "",
+    "endTime": "",
+    "closeTime": "",
+    "imageHost": "http://img.cznshoppingmall.com/",
+    "address": {
+      "id": 1,
+      "userId": 1,
+      "name": "czn",
+      "phone": "1775",
+      "mobile": "7389565",
+      "role": 0,
+      "province": "jiangsu",
+      "city": "nanjing",
+      "district": "jiangning",
+      "street": null,
+      "postcode": "211106",
+      "createTime": 1547317782000,
+      "updateTime": 1547317782000
+    },
+    "orderEntityVoList": [
+      {
+        "orderNo": 1547970185412,
+        "buyerId": 1,
+        "sellerId": 2,
+        "storeId": 1,
+        "productId": 2,
+        "productName": "sansung",
+        "productImageUrl": null,
+        "price": 3999,
+        "quantity": 8,
+        "totalPrice": 31992,
+        "createTime": 1547970175822
+      },
+      {
+        "orderNo": 1547970185412,
+        "buyerId": 1,
+        "sellerId": 2,
+        "storeId": 2,
+        "productId": 3,
+        "productName": "iphoneSE 64G",
+        "productImageUrl": null,
+        "price": 1888,
+        "quantity": 2,
+        "totalPrice": 3776,
+        "createTime": 1547970175833
+      }
+    ]
+  }
+}
+
+
+失败示例
+
+{
+  "status": 1,
+  "msg": "购物车中没有任何选中的商品"
+}
+
+
+
+1.2 查询订单明细接口
+请求方式： get/post
+http://localhost:8088/buyer/order/query
+
+参数说明：
+orderNo  订单号
+
+示例
+{
+  "status": 0,
+  "data": {
+    "orderNo": 1547381364107,
+    "payment": 67986,
+    "payType": 1,
+    "payTypeDesc": "在线支付",
+    "postage": 0,
+    "status": 30,
+    "statusDesc": "已发货",
+    "payTime": "2019-01-14 21:47:47",
+    "sendTime": "",
+    "endTime": "",
+    "closeTime": "",
+    "imageHost": "http://img.cznshoppingmall.com/",
+    "address": {
+      "id": 1,
+      "userId": 1,
+      "name": "czn",
+      "phone": "1775",
+      "mobile": "7389565",
+      "role": 0,
+      "province": "jiangsu",
+      "city": "nanjing",
+      "district": "jiangning",
+      "street": null,
+      "postcode": "211106",
+      "createTime": 1547317782000,
+      "updateTime": 1547317782000
+    },
+    "orderEntityVoList": [
+      {
+        "orderNo": 1547381364107,
+        "buyerId": 1,
+        "sellerId": 2,
+        "storeId": 1,
+        "productId": 1,
+        "productName": "iphone7 128G",
+        "productImageUrl": null,
+        "price": 5999,
+        "quantity": 6,
+        "totalPrice": 35994,
+        "createTime": 1547381358000
+      },
+      {
+        "orderNo": 1547381364107,
+        "buyerId": 1,
+        "sellerId": 2,
+        "storeId": 1,
+        "productId": 2,
+        "productName": "sansung",
+        "productImageUrl": null,
+        "price": 3999,
+        "quantity": 8,
+        "totalPrice": 31992,
+        "createTime": 1547381358000
+      }
+    ]
+  }
+}
+
+
+1.3 获取历史订单接口
+请求方式： get/post
+http://localhost:8088/buyer/order/list
+
+示例
+{
+  "status": 0,
+  "data": {
+    "pageNum": 1,
+    "pageSize": 5,
+    "size": 5,
+    "orderBy": null,
+    "startRow": 0,
+    "endRow": 4,
+    "total": 5,
+    "pages": 1,
+    "list": [
+      {
+        "orderNo": 1547381364107,
+        "payment": 67986,
+        "payType": 1,
+        "payTypeDesc": "在线支付",
+        "postage": 0,
+        "status": 0,
+        "statusDesc": "已取消",
+        "payTime": "2019-01-14 21:47:47",
+        "sendTime": "",
+        "endTime": "",
+        "closeTime": "",
+        "imageHost": "http://img.cznshoppingmall.com/",
+        "address": {
+          "id": 1,
+          "userId": 1,
+          "name": "czn",
+          "phone": "1775",
+          "mobile": "7389565",
+          "role": 0,
+          "province": "jiangsu",
+          "city": "nanjing",
+          "district": "jiangning",
+          "street": null,
+          "postcode": "211106",
+          "createTime": 1547317782000,
+          "updateTime": 1547317782000
+        },
+        "orderEntityVoList": [
+          {
+            "orderNo": 1547381364107,
+            "buyerId": 1,
+            "sellerId": 2,
+            "storeId": 1,
+            "productId": 1,
+            "productName": "iphone7 128G",
+            "productImageUrl": null,
+            "price": 5999,
+            "quantity": 6,
+            "totalPrice": 35994,
+            "createTime": 1547381358000
+          },
+          {
+            "orderNo": 1547381364107,
+            "buyerId": 1,
+            "sellerId": 2,
+            "storeId": 1,
+            "productId": 2,
+            "productName": "sansung",
+            "productImageUrl": null,
+            "price": 3999,
+            "quantity": 8,
+            "totalPrice": 31992,
+            "createTime": 1547381358000
+          }
+        ]
+      },
+      {
+        "orderNo": 1547381626381,
+        "payment": 67986,
+        "payType": 1,
+        "payTypeDesc": "在线支付",
+        "postage": 0,
+        "status": 10,
+        "statusDesc": "未付款",
+        "payTime": "",
+        "sendTime": "",
+        "endTime": "",
+        "closeTime": "",
+        "imageHost": "http://img.cznshoppingmall.com/",
+        "address": {
+          "id": 3,
+          "userId": 1,
+          "name": "chenzengnian",
+          "phone": "152",
+          "mobile": "9094234",
+          "role": 0,
+          "province": "jiangsu",
+          "city": "nanjing",
+          "district": "jiangning",
+          "street": null,
+          "postcode": "211106",
+          "createTime": 1547318032000,
+          "updateTime": 1547318032000
+        },
+        "orderEntityVoList": [
+          {
+            "orderNo": 1547381626381,
+            "buyerId": 1,
+            "sellerId": 2,
+            "storeId": 1,
+            "productId": 1,
+            "productName": "iphone7 128G",
+            "productImageUrl": null,
+            "price": 5999,
+            "quantity": 6,
+            "totalPrice": 35994,
+            "createTime": 1547381617000
+          },
+          {
+            "orderNo": 1547381626381,
+            "buyerId": 1,
+            "sellerId": 2,
+            "storeId": 1,
+            "productId": 2,
+            "productName": "sansung",
+            "productImageUrl": null,
+            "price": 3999,
+            "quantity": 8,
+            "totalPrice": 31992,
+            "createTime": 1547381617000
+          }
+        ]
+      },
+      {
+        "orderNo": 1547480549485,
+        "payment": 67986,
+        "payType": 1,
+        "payTypeDesc": "在线支付",
+        "postage": 0,
+        "status": 20,
+        "statusDesc": "已付款",
+        "payTime": "2019-01-14 23:44:02",
+        "sendTime": "",
+        "endTime": "",
+        "closeTime": "",
+        "imageHost": "http://img.cznshoppingmall.com/",
+        "address": {
+          "id": 1,
+          "userId": 1,
+          "name": "czn",
+          "phone": "1775",
+          "mobile": "7389565",
+          "role": 0,
+          "province": "jiangsu",
+          "city": "nanjing",
+          "district": "jiangning",
+          "street": null,
+          "postcode": "211106",
+          "createTime": 1547317782000,
+          "updateTime": 1547317782000
+        },
+        "orderEntityVoList": [
+          {
+            "orderNo": 1547480549485,
+            "buyerId": 1,
+            "sellerId": 2,
+            "storeId": 1,
+            "productId": 1,
+            "productName": "iphone7 128G",
+            "productImageUrl": null,
+            "price": 5999,
+            "quantity": 6,
+            "totalPrice": 35994,
+            "createTime": 1547480542000
+          },
+          {
+            "orderNo": 1547480549485,
+            "buyerId": 1,
+            "sellerId": 2,
+            "storeId": 1,
+            "productId": 2,
+            "productName": "sansung",
+            "productImageUrl": null,
+            "price": 3999,
+            "quantity": 8,
+            "totalPrice": 31992,
+            "createTime": 1547480542000
+          }
+        ]
+      },
+      {
+        "orderNo": 1547480798821,
+        "payment": 67986,
+        "payType": 1,
+        "payTypeDesc": "在线支付",
+        "postage": 0,
+        "status": 20,
+        "statusDesc": "已付款",
+        "payTime": "2019-01-14 23:47:35",
+        "sendTime": "",
+        "endTime": "",
+        "closeTime": "",
+        "imageHost": "http://img.cznshoppingmall.com/",
+        "address": {
+          "id": 1,
+          "userId": 1,
+          "name": "czn",
+          "phone": "1775",
+          "mobile": "7389565",
+          "role": 0,
+          "province": "jiangsu",
+          "city": "nanjing",
+          "district": "jiangning",
+          "street": null,
+          "postcode": "211106",
+          "createTime": 1547317782000,
+          "updateTime": 1547317782000
+        },
+        "orderEntityVoList": [
+          {
+            "orderNo": 1547480798821,
+            "buyerId": 1,
+            "sellerId": 2,
+            "storeId": 1,
+            "productId": 1,
+            "productName": "iphone7 128G",
+            "productImageUrl": null,
+            "price": 5999,
+            "quantity": 6,
+            "totalPrice": 35994,
+            "createTime": 1547480798000
+          },
+          {
+            "orderNo": 1547480798821,
+            "buyerId": 1,
+            "sellerId": 2,
+            "storeId": 1,
+            "productId": 2,
+            "productName": "sansung",
+            "productImageUrl": null,
+            "price": 3999,
+            "quantity": 8,
+            "totalPrice": 31992,
+            "createTime": 1547480798000
+          }
+        ]
+      },
+      {
+        "orderNo": 1547970185412,
+        "payment": 35768,
+        "payType": 1,
+        "payTypeDesc": "在线支付",
+        "postage": 0,
+        "status": 10,
+        "statusDesc": "未付款",
+        "payTime": "",
+        "sendTime": "",
+        "endTime": "",
+        "closeTime": "",
+        "imageHost": "http://img.cznshoppingmall.com/",
+        "address": {
+          "id": 1,
+          "userId": 1,
+          "name": "czn",
+          "phone": "1775",
+          "mobile": "7389565",
+          "role": 0,
+          "province": "jiangsu",
+          "city": "nanjing",
+          "district": "jiangning",
+          "street": null,
+          "postcode": "211106",
+          "createTime": 1547317782000,
+          "updateTime": 1547317782000
+        },
+        "orderEntityVoList": [
+          {
+            "orderNo": 1547970185412,
+            "buyerId": 1,
+            "sellerId": 2,
+            "storeId": 1,
+            "productId": 2,
+            "productName": "sansung",
+            "productImageUrl": null,
+            "price": 3999,
+            "quantity": 8,
+            "totalPrice": 31992,
+            "createTime": 1547970175000
+          },
+          {
+            "orderNo": 1547970185412,
+            "buyerId": 1,
+            "sellerId": 2,
+            "storeId": 2,
+            "productId": 3,
+            "productName": "iphoneSE 64G",
+            "productImageUrl": null,
+            "price": 1888,
+            "quantity": 2,
+            "totalPrice": 3776,
+            "createTime": 1547970175000
+          }
+        ]
+      }
+    ],
+    "firstPage": 1,
+    "prePage": 0,
+    "nextPage": 0,
+    "lastPage": 1,
+    "isFirstPage": true,
+    "isLastPage": true,
+    "hasPreviousPage": false,
+    "hasNextPage": false,
+    "navigatePages": 8,
+    "navigatepageNums": [
+      1
+    ]
+  }
+}
+
+
+
+
+
+1.4 取消订单接口
+请求方式： get/post
+http://localhost:8088/buyer/order/cancel
+
+参数说明：
+orderNo  订单号
+
+示例
+{
+  "status": 0,
+  "msg": "订单取消成功"
+}
+
+
+1.5 查询订单状态接口
+请求方式： get/post
+http://localhost:8088/buyer/order/order_status
+
+参数说明：
+orderNo  订单号
+
+示例
+{
+  "status": 0,
+  "data": {
+    "order_status": "CANCELED"
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,303 @@
+
+1.1  添加购物车接口(若购物车已经存在此商品，则数量会增加)
+请求方式： get/post
+http://localhost:8088/buyer/cart/add
+
+添加后会返回购物车中所有的商品列表
+参数说明：
+productId    要添加购物车商品的Id
+count        数量
+
+成功样例
+
+{
+  "status": 0,
+  "data": {
+    "cartProductVoList": [
+      {
+        "id": 6,
+        "buyerId": 1,
+        "storeId": 1,
+        "productId": 2,
+        "subtitle": "新品上市，手慢无",
+        "mainImageUrl": null,
+        "price": 3999,
+        "quantity": 8,
+        "totalPrice": 31992,
+        "checkStatus": 1,
+        "quantityLimit": 1
+      },
+      {
+        "id": 7,
+        "buyerId": 1,
+        "storeId": 2,
+        "productId": 3,
+        "subtitle": "副标题",
+        "mainImageUrl": null,
+        "price": 1888,
+        "quantity": 2,
+        "totalPrice": 3776,
+        "checkStatus": 1,
+        "quantityLimit": 1
+      }
+    ],
+    "cartTotalPrice": 35768,
+    "allChecked": 1,
+    "imageHost": "http://img.cznshoppingmall.com/"
+  }
+}
+
+
+失败样例
+{
+  "status": 1,
+  "msg": "添加购物车失败，该商品不存在或者已经下架"
+}
+
+
+
+1.2  删除购物车商品接口
+请求方式： get/post
+http://localhost:8088/buyer/cart/delete
+
+参数说明：
+cartId    购物车商品Id
+
+成功样例
+
+{
+  "status": 0,
+  "data": {
+    "cartProductVoList": [
+      {
+        "id": 6,
+        "buyerId": 1,
+        "storeId": 1,
+        "productId": 2,
+        "subtitle": "新品上市，手慢无",
+        "mainImageUrl": null,
+        "price": 3999,
+        "quantity": 8,
+        "totalPrice": 31992,
+        "checkStatus": 1,
+        "quantityLimit": 1
+      },
+      {
+        "id": 7,
+        "buyerId": 1,
+        "storeId": 2,
+        "productId": 3,
+        "subtitle": "副标题",
+        "mainImageUrl": null,
+        "price": 1888,
+        "quantity": 2,
+        "totalPrice": 3776,
+        "checkStatus": 1,
+        "quantityLimit": 1
+      }
+    ],
+    "cartTotalPrice": 35768,
+    "allChecked": 1,
+    "imageHost": "http://img.cznshoppingmall.com/"
+  }
+}
+
+
+
+1.3  选中购物车商品接口
+请求方式： get/post
+http://localhost:8088/buyer/cart/check
+
+参数说明：
+cartId    购物车商品Id
+
+示例
+{
+  "status": 0,
+  "data": {
+    "cartProductVoList": [
+      {
+        "id": 6,
+        "buyerId": 1,
+        "storeId": 1,
+        "productId": 2,
+        "subtitle": "新品上市，手慢无",
+        "mainImageUrl": null,
+        "price": 3999,
+        "quantity": 8,
+        "totalPrice": 31992,
+        "checkStatus": 1,
+        "quantityLimit": 1
+      },
+      {
+        "id": 7,
+        "buyerId": 1,
+        "storeId": 2,
+        "productId": 3,
+        "subtitle": "副标题",
+        "mainImageUrl": null,
+        "price": 1888,
+        "quantity": 2,
+        "totalPrice": 3776,
+        "checkStatus": 1,
+        "quantityLimit": 1
+      }
+    ],
+    "cartTotalPrice": 35768,
+    "allChecked": 1,
+    "imageHost": "http://img.cznshoppingmall.com/"
+  }
+}
+
+
+
+
+1.4  取消选中购物车商品接口
+请求方式： get/post
+http://localhost:8088/buyer/cart/uncheck
+
+参数说明：
+cartId    购物车商品Id
+
+示例
+{
+  "status": 0,
+  "data": {
+    "cartProductVoList": [
+      {
+        "id": 6,
+        "buyerId": 1,
+        "storeId": 1,
+        "productId": 2,
+        "subtitle": "新品上市，手慢无",
+        "mainImageUrl": null,
+        "price": 3999,
+        "quantity": 8,
+        "totalPrice": 31992,
+        "checkStatus": 0,
+        "quantityLimit": 1
+      },
+      {
+        "id": 7,
+        "buyerId": 1,
+        "storeId": 2,
+        "productId": 3,
+        "subtitle": "副标题",
+        "mainImageUrl": null,
+        "price": 1888,
+        "quantity": 2,
+        "totalPrice": 3776,
+        "checkStatus": 1,
+        "quantityLimit": 1
+      }
+    ],
+    "cartTotalPrice": 3776,
+    "allChecked": 0,
+    "imageHost": "http://img.cznshoppingmall.com/"
+  }
+}
+
+
+
+
+1.5  选中购物车所有商品接口
+请求方式： get/post
+http://localhost:8088/buyer/cart/check_all
+
+示例
+{
+  "status": 0,
+  "data": {
+    "cartProductVoList": [
+      {
+        "id": 6,
+        "buyerId": 1,
+        "storeId": 1,
+        "productId": 2,
+        "subtitle": "新品上市，手慢无",
+        "mainImageUrl": null,
+        "price": 3999,
+        "quantity": 8,
+        "totalPrice": 31992,
+        "checkStatus": 1,
+        "quantityLimit": 1
+      },
+      {
+        "id": 7,
+        "buyerId": 1,
+        "storeId": 2,
+        "productId": 3,
+        "subtitle": "副标题",
+        "mainImageUrl": null,
+        "price": 1888,
+        "quantity": 2,
+        "totalPrice": 3776,
+        "checkStatus": 1,
+        "quantityLimit": 1
+      }
+    ],
+    "cartTotalPrice": 35768,
+    "allChecked": 1,
+    "imageHost": "http://img.cznshoppingmall.com/"
+  }
+}
+
+
+1.6  取消选中购物车所有商品接口
+请求方式： get/post
+http://localhost:8088/buyer/cart/uncheck_all
+
+示例
+{
+  "status": 0,
+  "data": {
+    "cartProductVoList": [
+      {
+        "id": 6,
+        "buyerId": 1,
+        "storeId": 1,
+        "productId": 2,
+        "subtitle": "新品上市，手慢无",
+        "mainImageUrl": null,
+        "price": 3999,
+        "quantity": 8,
+        "totalPrice": 31992,
+        "checkStatus": 0,
+        "quantityLimit": 1
+      },
+      {
+        "id": 7,
+        "buyerId": 1,
+        "storeId": 2,
+        "productId": 3,
+        "subtitle": "副标题",
+        "mainImageUrl": null,
+        "price": 1888,
+        "quantity": 2,
+        "totalPrice": 3776,
+        "checkStatus": 0,
+        "quantityLimit": 1
+      }
+    ],
+    "cartTotalPrice": 0,
+    "allChecked": 0,
+    "imageHost": "http://img.cznshoppingmall.com/"
+  }
+}
+
+
+1.7 获取购物车所有商品的总数接口
+请求方式： get/post
+http://localhost:8088/buyer/cart/count
+
+示例
+{
+  "status": 0,
+  "data": 10
+}
+
+
+
+
+
+

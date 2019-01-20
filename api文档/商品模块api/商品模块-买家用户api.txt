@@ -1,0 +1,162 @@
+
+1.1 获取商品详情接口
+请求方式: get/post
+http://localhost:8088/buyer/product/get_product
+参数说明
+productId   商品的Id
+
+成功样例
+
+{
+  "status": 0,
+  "data": {
+    "id": 1,
+    "categoryId": 100001,
+    "storeId": 1,
+    "storeName": "mac店",
+    "name": null,
+    "mainImageUrl": null,
+    "subImagesUrl": null,
+    "subtitle": "新品上市，手慢无",
+    "detail": "ipone7 超大级别128G存储，靓丽外观，时尚大气，潮流上档次",
+    "price": 5999,
+    "status": 0,
+    "imageHost": "http://img.cznshoppingmall.com/"
+  }
+}
+失败样例
+{
+  "status": 1,
+  "msg": "该商品不存在"
+}
+
+
+
+1.2 通过分类和关键字搜索商品接口
+请求方式: get/post
+http://localhost:8088/buyer/product/search_product/categoryId_keyword
+参数说明
+注意：只穿类别时会查类别下的所有商品，只传关键字会查询所有包含此关键字的商品，类别和关键字都传时会查询该类别下包含该关键字的商品
+categoryId   要搜索的商品分类Id
+keyword      搜索的商品包含关键字
+pageNum      最多返回多少页商品（可以不传，默认时1）
+pageSize     一页最多有多少个商品（可以不传，默认是10）
+
+成功样例
+
+{
+  "status": 0,
+  "data": {
+    "pageNum": 1,
+    "pageSize": 1,
+    "size": 1,
+    "orderBy": null,
+    "startRow": 0,
+    "endRow": 0,
+    "total": 1,
+    "pages": 1,
+    "list": [
+      {
+        "id": 3,
+        "categoryId": 100001,
+        "storeId": 2,
+        "storeName": "iphone手机官方店",
+        "name": null,
+        "mainImageUrl": null,
+        "subImagesUrl": null,
+        "subtitle": "副标题",
+        "detail": "iphoneSE的详细描述",
+        "price": 1888,
+        "status": 1,
+        "imageHost": "http://img.cznshoppingmall.com/"
+      }
+    ],
+    "firstPage": 1,
+    "prePage": 0,
+    "nextPage": 0,
+    "lastPage": 1,
+    "isFirstPage": true,
+    "isLastPage": true,
+    "hasPreviousPage": false,
+    "hasNextPage": false,
+    "navigatePages": 8,
+    "navigatepageNums": [
+      1
+    ]
+  }
+}
+
+失败样例
+{
+  "status": 2,
+  "msg": "ILLEGAL_ARGUMENT"
+}
+
+
+
+
+1.3 通过店铺名搜索商品接口
+请求方式: get/post
+http://localhost:8088/buyer/product/search_product/store
+参数说明
+storeName   店铺名
+pageNum      最多返回多少页商品（可以不传，默认时1）
+pageSize     一页最多有多少个商品（可以不传，默认是10）
+
+成功样例
+
+{
+  "status": 0,
+  "data": {
+    "pageNum": 1,
+    "pageSize": 10,
+    "size": 1,
+    "orderBy": null,
+    "startRow": 1,
+    "endRow": 1,
+    "total": 1,
+    "pages": 1,
+    "list": [
+      {
+        "id": 3,
+        "categoryId": 100001,
+        "storeId": 2,
+        "storeName": "iphone手机官方店",
+        "name": null,
+        "mainImageUrl": null,
+        "subImagesUrl": null,
+        "subtitle": "副标题",
+        "detail": "iphoneSE的详细描述",
+        "price": 1888,
+        "status": 1,
+        "imageHost": "http://img.cznshoppingmall.com/"
+      }
+    ],
+    "firstPage": 1,
+    "prePage": 0,
+    "nextPage": 0,
+    "lastPage": 1,
+    "isFirstPage": true,
+    "isLastPage": true,
+    "hasPreviousPage": false,
+    "hasNextPage": false,
+    "navigatePages": 8,
+    "navigatepageNums": [
+      1
+    ]
+  }
+}
+
+失败样例
+
+{
+  "status": 10,
+  "msg": "NEED_LOGIN"
+}
+
+
+
+
+
+
+

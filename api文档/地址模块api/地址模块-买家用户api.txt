@@ -1,0 +1,141 @@
+
+1.1  添加收货地址接口
+请求方式：get/post
+http://localhost:8088/buyer/address/add
+参数说明
+userId     用户Id
+name       收货人姓名
+phone      收货人电话
+mobile     收货人移动电话
+province   省份
+city       城市
+district   区/县
+street     街道
+postcode   邮编
+
+示例
+{
+  "status": 0,
+  "msg": "添加收货地址成功"
+}
+
+
+1.2  修改收货地址接口
+请求方式：get/post
+http://localhost:8088/buyer/address/update
+参数说明
+id         收货地址的Id
+name       收货人姓名
+phone      收货人电话
+mobile     收货人移动电话
+province   省份
+city       城市
+district   区/县
+street     街道
+postcode   邮编
+
+示例
+{
+  "status": 0,
+  "msg": "更新地址成功"
+}
+
+
+1.3  获取地址详情接口
+请求方式：get/post
+http://localhost:8088/buyer/address/query
+参数说明
+addressId         收货地址的Id
+
+示例
+{
+  "status": 0,
+  "data": {
+    "id": 5,
+    "userId": 1,
+    "name": "小陈",
+    "phone": "1775",
+    "mobile": "4232",
+    "role": 0,
+    "province": "江苏省",
+    "city": "南京市",
+    "district": "江宁区",
+    "street": "将军大道",
+    "postcode": "211106",
+    "createTime": 1547968659000,
+    "updateTime": 1547968659000
+  }
+}
+
+
+1.4  删除收货地址接口
+请求方式：get/post
+http://localhost:8088/buyer/address/delete
+参数说明
+addressId         收货地址的Id
+
+示例
+{
+  "status": 0,
+  "msg": "删除地址成功"
+}
+
+
+
+
+1.5  获取用户收货地址列表接口
+请求方式：get/post
+http://localhost:8088/buyer/address/list
+
+示例
+{
+  "status": 0,
+  "data": [
+    {
+      "id": 1,
+      "userId": 1,
+      "name": "czn",
+      "phone": "1775",
+      "mobile": "7389565",
+      "role": 0,
+      "province": "jiangsu",
+      "city": "nanjing",
+      "district": "jiangning",
+      "street": null,
+      "postcode": "211106",
+      "createTime": 1547317782000,
+      "updateTime": 1547317782000
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "name": "chenzengnian",
+      "phone": "152",
+      "mobile": "9094234",
+      "role": 0,
+      "province": "jiangsu",
+      "city": "nanjing",
+      "district": "jiangning",
+      "street": null,
+      "postcode": "211106",
+      "createTime": 1547318032000,
+      "updateTime": 1547318032000
+    },
+    {
+      "id": 5,
+      "userId": 1,
+      "name": "小陈",
+      "phone": "1775",
+      "mobile": "4232",
+      "role": 0,
+      "province": "江苏省",
+      "city": "南京市",
+      "district": "江宁区",
+      "street": "将军大道",
+      "postcode": "211106",
+      "createTime": 1547968659000,
+      "updateTime": 1547968659000
+    }
+  ]
+}
+

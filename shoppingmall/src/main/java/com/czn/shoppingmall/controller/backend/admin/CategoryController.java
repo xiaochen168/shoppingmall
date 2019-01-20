@@ -81,7 +81,7 @@ public class CategoryController {
     }
 
     @RequestMapping("all_category_child")
-    public ServerResponse getAllCategoryChildByParentId(Integer categoryId, HttpSession session) {
+    public ServerResponse getAllCategoryChildByParentId(Integer parentId, HttpSession session) {
         User currentUser = (User)session.getAttribute(Const.CURRENT_USER);
         if (null == currentUser) {
             return ServerResponse.createByNeedLogin();
@@ -89,10 +89,10 @@ public class CategoryController {
         if (!iUserService.checkRole(currentUser.getRole(), Const.Role.ROLE_ADMIN)) {
             return ServerResponse.createByErrorMessage("不是商城管理员,不具有添加分类权限");
         }
-        if (null == categoryId) {
+        if (null == parentId) {
             return ServerResponse.createByIllegalArgument();
         }
-        return iCategoryService.getAllChildCategoryIdByParentId(categoryId);
+        return iCategoryService.getAllChildCategoryIdByParentId(parentId);
     }
 
 
