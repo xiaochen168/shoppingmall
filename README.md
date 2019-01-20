@@ -1,6 +1,14 @@
 shoppingmall 
 是使用ssm框架开发的一个仿照的是天猫的购物商城项目的服务端。
 
+项目用到的工具如netapp(做内网穿透)、nginx(做静态资源代理)、FTP(文件、图片服务器)在tools目录下。
+
+项目的数据库文件在sql目录下
+
+项目的restful接口使用文档在api文档目录下
+
+项目的工程代码在shoppingmall下
+
 项目主要用到的技术以及作用
 
 spring、springmvc、mybatis、mysql、nginx、ftp、maven-3.5.4、JDK1.8
