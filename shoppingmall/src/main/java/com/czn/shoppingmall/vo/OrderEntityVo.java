@@ -17,6 +17,8 @@ public class OrderEntityVo {
 
     private String productName;
 
+    private String detail;
+
     private String productImageUrl;
 
     private BigDecimal price;
@@ -113,5 +115,13 @@ public class OrderEntityVo {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
     }
 }

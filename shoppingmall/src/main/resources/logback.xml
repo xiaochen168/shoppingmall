@@ -8,8 +8,8 @@
         </encoder>
         <!-- 配置DEBGU级别以上的日志都打出来 -->
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <level>DEBUG</level>
-        </filter>
+        <level>DEBUG</level>
+    </filter>
     </appender>
 
     <!-- 访问操作日志记录-->

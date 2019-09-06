@@ -139,6 +139,9 @@ public class OrderServiceImpl implements IOrderService {
     public OrderEntityVo assembleOrderEntityVo(OrderEntity orderEntity) {
         OrderEntityVo orderEntityVo = new OrderEntityVo();
 
+        Product product = productMapper.selectByPrimaryKey(orderEntity.getProductId());
+
+        orderEntityVo.setDetail(product.getDetail());
         orderEntityVo.setOrderNo(orderEntity.getOrderNo());
         orderEntityVo.setSellerId(orderEntity.getSellerId());
         orderEntityVo.setBuyerId(orderEntity.getBuyerId());

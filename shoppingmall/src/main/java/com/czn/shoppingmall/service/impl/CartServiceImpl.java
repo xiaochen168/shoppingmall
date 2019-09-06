@@ -12,6 +12,8 @@ import com.czn.shoppingmall.util.PropertiesUtil;
 import com.czn.shoppingmall.vo.CartListVo;
 import com.czn.shoppingmall.vo.CartProductVo;
 import com.google.common.collect.Lists;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,8 @@ import java.util.List;
 
 @Service("iCartService")
 public class CartServiceImpl implements ICartService {
+
+    Logger logger = LoggerFactory.getLogger(CartServiceImpl.class);
 
     @Autowired
     private CartMapper cartMapper;
@@ -56,6 +60,20 @@ public class CartServiceImpl implements ICartService {
         cartMapper.deleteByCartIdAndBuyerId(cartId,buyerId);
         return this.list(buyerId);
     }
+
+    @Override
+    public ServerResponse deleteSelected(List<Integer> deleteIds, Integer buyerId) {
+        try {
+            deleteIds.stream().forEach(id -> {
+                cartMapper.deleteByCartIdAndBuyerId(id,buyerId);
+            });
+        } catch (Exception e) {
+            logger.error("delete cart error:{}", e);
+            return ServerResponse.createByErrorMessage("删除购物车失败");
+        }
+        return ServerResponse.createBySuccessMessage("购物车商品删除成功");
+    }
+
 
     public ServerResponse list(Integer buyerId) {
         CartListVo cartListVo = this.getCartListVo(buyerId);

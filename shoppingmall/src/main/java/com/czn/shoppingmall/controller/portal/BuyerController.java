@@ -7,10 +7,7 @@ import com.czn.shoppingmall.service.IUserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.servlet.http.HttpSession;
@@ -53,7 +50,7 @@ public class BuyerController {
      * @return
      */
     @RequestMapping(value = "register", method = RequestMethod.POST)
-    public ServerResponse register(User user){
+    public ServerResponse register(@RequestBody User user){
         if (null == user) {
             return ServerResponse.createByIllegalArgument();
         }
@@ -68,7 +65,7 @@ public class BuyerController {
      * @return
      */
     @RequestMapping(value = "update_information", method = RequestMethod.POST)
-    public ServerResponse update(User user,HttpSession session){
+    public ServerResponse update(@RequestBody User user,HttpSession session){
         User currentUser = (User) session.getAttribute(Const.CURRENT_USER);
         if (null == currentUser) {
             return ServerResponse.createByNeedLogin("用户未登录,请先登陆");

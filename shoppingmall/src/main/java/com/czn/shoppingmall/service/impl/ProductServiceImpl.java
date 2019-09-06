@@ -102,6 +102,34 @@ public class ProductServiceImpl implements IProductService {
        return ServerResponse.createBySuccessData(resultMap);
     }
 
+    public ServerResponse productImageUpload(Integer productId, MultipartFile mainImage, List<MultipartFile> subImage, String uploadPath) {
+        Product product = productMapper.selectByPrimaryKey(productId);
+        if (product == null) {
+            return ServerResponse.createByErrorMessage("此productId对应的商品不存在");
+        }
+        String mainImageUrl =  iFileService.upload(mainImage, uploadPath);
+        if (StringUtils.isBlank(mainImageUrl)) {
+           return ServerResponse.createByErrorMessage("上传商品图片失败");
+        }
+        String subImageUrl = "";
+        for (int i = 0; i < subImage.size(); i++) {
+            MultipartFile image = subImage.get(i);
+            String imageUrl =  iFileService.upload(image, uploadPath);
+            if (StringUtils.isBlank(imageUrl)) {
+                return ServerResponse.createByErrorMessage("上传商品图片失败");
+            }
+            if (i == 0) {
+                subImageUrl += imageUrl;
+            } else {
+                subImageUrl += "," + imageUrl;
+            }
+        }
+        product.setMainImageUrl(mainImageUrl);
+        product.setSubImagesUrl(subImageUrl);
+        productMapper.updateByPrimaryKeySelective(product);
+        return ServerResponse.createBySuccessMessage("上传商品图片成功");
+    }
+
     public ServerResponse list(Integer sellerId) {
         List<Integer> storeIdList = storeMapper.selectStoreIdBySellerId(sellerId);
         List<Product> productList = productMapper.selectByStoreIdList(storeIdList);
@@ -129,6 +157,7 @@ public class ProductServiceImpl implements IProductService {
         productVo.setMainImageUrl(product.getMainImageUrl());
         productVo.setSubImagesUrl(product.getSubImagesUrl());
         productVo.setPrice(product.getPrice());
+        productVo.setStock(product.getStock());
         productVo.setStatus(product.getStatus());
         productVo.setImageHost(PropertiesUtil.getProperty("ftp.server.http.prefix"));
         return productVo;

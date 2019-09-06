@@ -22,10 +22,10 @@ public class BuyerProductController {
 
     @RequestMapping("get_product")
     public ServerResponse getProduct(Integer productId, HttpSession session) {
-        User currentUser = (User)session.getAttribute(Const.CURRENT_USER);
-        if (null == currentUser) {
-            return ServerResponse.createByNeedLogin();
-        }
+//        User currentUser = (User)session.getAttribute(Const.CURRENT_USER);
+//        if (null == currentUser) {
+//            return ServerResponse.createByNeedLogin();
+//        }
         if (null == productId) {
             return ServerResponse.createByIllegalArgument();
         }

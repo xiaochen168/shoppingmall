@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @RestController
 @RequestMapping("/seller/product/")
@@ -57,13 +58,13 @@ public class SellerProductController {
 
     @RequestMapping("get_detail")
     public ServerResponse list(Integer productId, HttpSession session) {
-        User currentUser = (User)session.getAttribute(Const.CURRENT_USER);
-        if (null == currentUser) {
-            return ServerResponse.createByNeedLogin();
-        }
-        if (!iUserService.checkRole(currentUser.getRole(), Const.Role.ROLE_SELLER)) {
-            return ServerResponse.createByErrorMessage("您不是商家，不具有查看商品详情权限");
-        }
+//        User currentUser = (User)session.getAttribute(Const.CURRENT_USER);
+//        if (null == currentUser) {
+//            return ServerResponse.createByNeedLogin();
+//        }
+//        if (!iUserService.checkRole(currentUser.getRole(), Const.Role.ROLE_SELLER)) {
+//            return ServerResponse.createByErrorMessage("您不是商家，不具有查看商品详情权限");
+//        }
         if (null == productId) {
             return ServerResponse.createByIllegalArgument();
         }
@@ -95,6 +96,26 @@ public class SellerProductController {
         String uploadDir = request.getSession().getServletContext().getRealPath("upload");
         return iProductService.upload(file, uploadDir);
     }
+
+
+    @RequestMapping("product-image-upload")
+    public ServerResponse productImageUpload(@RequestParam(value = "productId", required = false)Integer productId,
+                                             @RequestParam(value = "mainImage", required = false)MultipartFile mainImage,
+                                             @RequestParam(value = "subImage", required = false) List<MultipartFile> subImage,
+                                 HttpSession session, HttpServletRequest request) {
+        User currentUser = (User)session.getAttribute(Const.CURRENT_USER);
+        if (null == currentUser) {
+            return ServerResponse.createByNeedLogin();
+        }
+        if (!iUserService.checkRole(currentUser.getRole(), Const.Role.ROLE_SELLER)) {
+            return ServerResponse.createByErrorMessage("您不是商家，不具有上传文件权限");
+        }
+        String uploadDir = request.getSession().getServletContext().getRealPath("upload");
+        return iProductService.productImageUpload(productId, mainImage, subImage,uploadDir);
+    }
+
+
+
 
     @RequestMapping("rich_text_upload")
     public ServerResponse richTextUpload(@RequestParam(value = "upload_file", required = false)MultipartFile file,

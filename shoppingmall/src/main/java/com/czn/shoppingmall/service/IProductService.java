@@ -4,6 +4,8 @@ import com.czn.shoppingmall.common.ServerResponse;
 import com.czn.shoppingmall.domain.Product;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 public interface IProductService {
 
     public ServerResponse addOrUpdate(Product product);
@@ -13,6 +15,8 @@ public interface IProductService {
     public ServerResponse getProductDetail(Integer productId);
 
     public ServerResponse upload(MultipartFile multipartFile, String uploadPath);
+
+    public ServerResponse productImageUpload(Integer productId, MultipartFile mainImage, List<MultipartFile> subImage, String uploadPath);
 
     public ServerResponse list(Integer sellerId);
 

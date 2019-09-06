@@ -2,10 +2,14 @@ package com.czn.shoppingmall.service;
 
 import com.czn.shoppingmall.common.ServerResponse;
 
+import java.util.List;
+
 public interface ICartService {
     public ServerResponse add(Integer productId, Integer count, Integer buyerId);
 
     public ServerResponse delete(Integer cartId, Integer buyerId);
+
+    public ServerResponse deleteSelected(List<Integer> deleteIds, Integer buyerId);
 
     public ServerResponse list(Integer buyerId);
 

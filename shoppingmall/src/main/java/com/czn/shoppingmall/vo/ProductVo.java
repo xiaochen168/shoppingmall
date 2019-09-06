@@ -23,6 +23,8 @@ public class ProductVo {
 
     BigDecimal price;
 
+    Integer stock;
+
     int status;
 
     String imageHost;
@@ -121,5 +123,13 @@ public class ProductVo {
 
     public void setImageHost(String imageHost) {
         this.imageHost = imageHost;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
     }
 }

@@ -7,6 +7,7 @@ import com.czn.shoppingmall.domain.User;
 import com.czn.shoppingmall.service.IAddressService;
 import com.czn.shoppingmall.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,7 +23,7 @@ public class BuyAddressController {
     private IAddressService iAddressService;
 
     @RequestMapping("add")
-    public ServerResponse add(Address address, HttpSession session) {
+    public ServerResponse add(@RequestBody Address address, HttpSession session) {
         User currentUser = (User)session.getAttribute(Const.CURRENT_USER);
         if (null == currentUser) {
             return ServerResponse.createByNeedLogin();
@@ -60,7 +61,7 @@ public class BuyAddressController {
     }
 
     @RequestMapping("update")
-    public ServerResponse update(Address address, HttpSession session) {
+    public ServerResponse update(@RequestBody Address address, HttpSession session) {
         User currentUser = (User)session.getAttribute(Const.CURRENT_USER);
         if (null == currentUser) {
             return ServerResponse.createByNeedLogin();
